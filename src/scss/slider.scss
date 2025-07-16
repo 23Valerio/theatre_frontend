@@ -1,0 +1,100 @@
+.body-carousel {
+   box-sizing: border-box;
+   background-color: #111;
+   display: grid;
+   place-items: center;
+   position: relative;
+   height: 30rem; // або інша фіксована висота
+   width: 100%;
+}
+
+.carousel {
+   position: relative;
+   height: 100%;
+   width: 100%;
+   overflow: hidden;
+}
+.carousel__item {
+   height: 80%;
+   width: auto;
+   border-radius: 10px;
+   overflow: hidden;
+   box-shadow: 0 1rem 4rem rgba(0,0,0,1);
+   position: absolute;
+   top: 50%;
+   left: 50%;
+   transform: translate(-50%,-50%) scale(.1);
+   z-index: 0;
+   transition: all .4s linear;
+
+   img {
+      width: 100%;
+      min-height: 100%;
+      object-fit: cover;
+   }
+}
+
+
+.carousel__item--main {
+   transform: translate(-50%,-50%) scale(1);
+   z-index: 2;
+   cursor: pointer;
+}
+
+.carousel__item--left {
+   transform: translate(-110%,-50%) scale(.9);
+   z-index: 1;
+}
+.carousel__item--right {
+   transform: translate(10%,-50%) scale(.9);
+   z-index: 1;
+}
+.carousel__item--left img, .carousel__item--right img {
+   filter: grayscale(80%);
+}
+
+// .carousel__item--right:hover {
+//    transform: translate(10%,-50%) scale(1.2);
+//    z-index: 3;
+//    cursor: pointer;
+// }
+// .carousel__item--left:hover {
+//    transform: translate(-110%,-50%) scale(1.2);
+//    z-index: 3;
+//    cursor: pointer;
+// }
+.carousel__item--main:hover {
+   transform: translate(-50%,-50%) scale(1.2);
+}
+// .carousel__item:hover > .carousel__text {
+//    opacity: 1;
+// }
+// .carousel__item:hover img {
+//    filter: grayscale(0%);
+// }
+
+
+.carousel__btns {
+   position: absolute;
+   bottom: 0px;
+   left: 50%;
+   transform: translateX(-50%);
+   display: flex;
+   justify-content: space-between;
+}
+.carousel__btn {
+   background-color: transparent;
+   height: 2rem;
+   width: 2rem;
+   border-radius: 50%;
+   border:1px solid currentColor;
+   color: #fff;
+   cursor: pointer;
+}
+.carousel__btn svg {
+   height: 1.8rem;
+   width: 1.8rem;
+}
+.carousel__btn:hover {
+   color: #aaa;
+}

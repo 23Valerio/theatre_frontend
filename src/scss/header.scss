@@ -1,0 +1,121 @@
+
+.site-header {
+   background-color: #111;
+   color: white;
+   font-family: 'Segoe UI', sans-serif;
+   padding: 1rem 0;
+   border-bottom: 1px solid #4B4136;
+ 
+   .container {
+     max-width: 1200px;
+     margin: 0 auto;
+     padding: 0 1rem;
+     display: flex;
+     align-items: center;
+     justify-content: space-between;
+     position: relative;
+   }
+ 
+   .logo {
+     font-size: 1.5rem;
+     font-weight: bold;
+
+     img {
+      width: 50px;
+      background-color: #f0a420;
+     }
+ 
+     span {
+       color: #fff;
+     }
+   }
+ 
+   .main-nav {
+     ul {
+       display: flex;
+       gap: 2rem;
+       list-style: none;
+       margin: 0;
+       padding: 0;
+ 
+       li a {
+         text-decoration: none;
+         color: #ddd;
+         font-size: 0.95rem;
+         position: relative;
+ 
+         &.active {
+           color: #f0a420;
+           font-weight: 500;
+         }
+ 
+         &:hover {
+           color: #f0a420;
+         }
+       }
+     }
+   }
+ 
+   .btn {
+     padding: 0.6rem 1rem;
+     border: 1px solid #f0a420;
+     text-decoration: none;
+     color: #f0a420;
+     font-weight: 500;
+     font-size: 0.9rem;
+     transition: all 0.3s ease;
+ 
+     &:hover {
+       background-color: #f0a420;
+       color: #111;
+     }
+   }
+ 
+   // Burger styles
+   .burger {
+     display: none;
+     flex-direction: column;
+     gap: 5px;
+     background: none;
+     border: none;
+     cursor: pointer;
+ 
+     span {
+       display: block;
+       width: 25px;
+       height: 3px;
+       background-color: #fff;
+       border-radius: 3px;
+     }
+   }
+ 
+   // Responsive styles
+   @media (max-width: 768px) {
+     .burger {
+       display: flex;
+     }
+ 
+     .main-nav {
+       position: absolute;
+       top: 100%;
+       left: 0;
+       right: 0;
+       background: #111;
+       display: none;
+ 
+       ul {
+         flex-direction: column;
+         padding: 1rem;
+         gap: 1rem;
+       }
+     }
+ 
+     .main-nav.open {
+       display: block;
+     }
+ 
+     .btn-buy {
+       display: none;
+     }
+   }
+ }
