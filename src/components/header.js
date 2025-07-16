@@ -2,9 +2,9 @@ export function createHeader() {
       const header = document.createElement('header');
       header.innerHTML = `
          <div class="container">
-            <div class="logo">
-               <img src="/Logo_Tresk.svg">   
-            </div>
+  
+            <img class="logo" src="/Logo_Tresk.svg">   
+ 
 
             <button class="burger" aria-label="Toggle menu">
                <span></span><span></span><span></span>

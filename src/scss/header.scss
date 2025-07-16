@@ -1,33 +1,26 @@
-
+@import url('https://fonts.googleapis.com/css2?family=Old+Standard+TT:ital,wght@0,400;0,700;1,400&display=swap');
 .site-header {
-   background-color: #111;
-   color: white;
-   font-family: 'Segoe UI', sans-serif;
-   padding: 1rem 0;
-   border-bottom: 1px solid #4B4136;
+  background-color: #111;
+  color: white;
+  font-family: "Old Standard TT", serif;
+  padding: 1rem 0;
+  border-bottom: 1px solid #4B4136;
+  width: 100%;
+
+
  
    .container {
-     max-width: 1200px;
      margin: 0 auto;
      padding: 0 1rem;
      display: flex;
      align-items: center;
      justify-content: space-between;
-     position: relative;
+     
    }
  
    .logo {
-     font-size: 1.5rem;
-     font-weight: bold;
-
-     img {
       width: 50px;
       background-color: #f0a420;
-     }
- 
-     span {
-       color: #fff;
-     }
    }
  
    .main-nav {

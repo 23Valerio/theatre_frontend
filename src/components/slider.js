@@ -1,6 +1,7 @@
 export function createSlider() {
    const slider = document.createElement('div');
    slider.innerHTML = `
+
       <div class="carousel">
          <div class="carousel__item carousel__item--left">
             <img src="1.jpg" alt="">
@@ -25,7 +26,7 @@ export function createSlider() {
             <button class="carousel__btn" id="rightBtn"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="currentColor" fill-rule="evenodd" d="m9.005 4l8 8l-8 8L7 18l6.005-6L7 6z"/></svg></button>
          </div>
       </div>
-   `;
+      `;
    slider.className = 'body-carousel';
 
    const carouselItems = slider.querySelectorAll('.carousel__item');
