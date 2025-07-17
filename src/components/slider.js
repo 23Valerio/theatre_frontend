@@ -1,26 +1,21 @@
+import { slider_images } from '../variables.js';
+
+
+function sliderImagesHtml(slider_images) {
+   let slider_html = '';
+   for (let i = 0; i < slider_images.length; i++) {
+      slider_html += '\n<div class="carousel__item"> \n<img src="' +
+                     slider_images[i] +
+                     '" alt="tresk image">\n</div>'
+    }
+    return slider_html
+}
+
 export function createSlider() {
    const slider = document.createElement('div');
    slider.innerHTML = `
-
       <div class="carousel">
-         <div class="carousel__item carousel__item--left">
-            <img src="1.jpg" alt="">
-         </div>
-         <div class="carousel__item carousel__item--main">
-            <img src="2.jpg" alt="">
-         </div>
-         <div class="carousel__item carousel__item--right">
-            <img src="3.jpg" alt="">
-         </div>
-         <div class="carousel__item">
-            <img src="4.jpg" alt="">
-         </div>
-         <div class="carousel__item">
-            <img src="5.jpg" alt="">
-         </div>
-         <div class="carousel__item">
-            <img src="6.jpg" alt="">
-         </div>
+         ${sliderImagesHtml(slider_images)}
          <div class="carousel__btns">
             <button class="carousel__btn" id="leftBtn"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="currentColor" fill-rule="evenodd" d="m15 4l2 2l-6 6l6 6l-2 2l-8-8z"/></svg></button>
             <button class="carousel__btn" id="rightBtn"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="currentColor" fill-rule="evenodd" d="m9.005 4l8 8l-8 8L7 18l6.005-6L7 6z"/></svg></button>
@@ -28,6 +23,15 @@ export function createSlider() {
       </div>
       `;
    slider.className = 'body-carousel';
+
+   const carousel = slider.querySelector('.carousel');
+   
+   if (carousel) {
+      const children = carousel.children;
+      children[0].classList.add('carousel__item--left');
+      children[1].classList.add('carousel__item--main');
+      children[2].classList.add('carousel__item--right');
+   };
 
    const carouselItems = slider.querySelectorAll('.carousel__item');
    let currentItem = slider.querySelector('.carousel__item--main');
