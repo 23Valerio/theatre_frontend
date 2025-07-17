@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Old+Standard+TT:ital,wght@0,400;0,700;1,400&display=swap');
+
 .site-header {
   background-color: #111;
   color: white;
@@ -7,80 +8,77 @@
   border-bottom: 1px solid #4B4136;
   width: 100%;
 
-
+  .container {
+    margin: 0 auto;
+    padding: 0 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between; 
+  }
  
-   .container {
-     margin: 0 auto;
-     padding: 0 1rem;
-     display: flex;
-     align-items: center;
-     justify-content: space-between;
-     
-   }
+  .logo {
+    width: 50px;
+    background-color: #f0a420;
+  }
  
-   .logo {
-      width: 50px;
+  .main-nav {
+    ul {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+ 
+      li a {
+        text-decoration: none;
+        color: #ddd;
+        font-size: 0.95rem;
+        position: relative;
+ 
+        &.active {
+          color: #f0a420;
+          font-weight: 500;
+        }
+ 
+        &:hover {
+          color: #f0a420;
+        }
+      }
+    }
+  }
+ 
+  .btn {
+    padding: 0.6rem 1rem;
+    border: 1px solid #f0a420;
+    text-decoration: none;
+    color: #f0a420;
+    font-weight: 500;
+    font-size: 0.9rem;
+    transition: all 0.3s ease;
+ 
+    &:hover {
       background-color: #f0a420;
-   }
+      color: #111;
+    }
+  }
  
-   .main-nav {
-     ul {
-       display: flex;
-       gap: 2rem;
-       list-style: none;
-       margin: 0;
-       padding: 0;
+  // Burger styles
+  .burger {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    background: none;
+    border: none;
+    cursor: pointer;
  
-       li a {
-         text-decoration: none;
-         color: #ddd;
-         font-size: 0.95rem;
-         position: relative;
- 
-         &.active {
-           color: #f0a420;
-           font-weight: 500;
-         }
- 
-         &:hover {
-           color: #f0a420;
-         }
-       }
-     }
-   }
- 
-   .btn {
-     padding: 0.6rem 1rem;
-     border: 1px solid #f0a420;
-     text-decoration: none;
-     color: #f0a420;
-     font-weight: 500;
-     font-size: 0.9rem;
-     transition: all 0.3s ease;
- 
-     &:hover {
-       background-color: #f0a420;
-       color: #111;
-     }
-   }
- 
-   // Burger styles
-   .burger {
-     display: none;
-     flex-direction: column;
-     gap: 5px;
-     background: none;
-     border: none;
-     cursor: pointer;
- 
-     span {
-       display: block;
-       width: 25px;
-       height: 3px;
-       background-color: #fff;
-       border-radius: 3px;
-     }
-   }
+    span {
+      display: block;
+      width: 25px;
+      height: 3px;
+      background-color: #fff;
+      border-radius: 3px;
+    }
+  }
  
    // Responsive styles
    @media (max-width: 768px) {

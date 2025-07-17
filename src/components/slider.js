@@ -1,6 +1,7 @@
 import { slider_images } from '../variables.js';
 
 
+
 function sliderImagesHtml(slider_images) {
    let slider_html = '';
    for (let i = 0; i < slider_images.length; i++) {
@@ -16,58 +17,62 @@ export function createSlider() {
    slider.innerHTML = `
       <div class="carousel">
          ${sliderImagesHtml(slider_images)}
-         <div class="carousel__btns">
-            <button class="carousel__btn" id="leftBtn"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="currentColor" fill-rule="evenodd" d="m15 4l2 2l-6 6l6 6l-2 2l-8-8z"/></svg></button>
-            <button class="carousel__btn" id="rightBtn"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="currentColor" fill-rule="evenodd" d="m9.005 4l8 8l-8 8L7 18l6.005-6L7 6z"/></svg></button>
-         </div>
+      </div>
+      <div class="carousel__btns">
+         <button class="carousel__btn" id="leftBtn"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="currentColor" fill-rule="evenodd" d="m15 4l2 2l-6 6l6 6l-2 2l-8-8z"/></svg></button>
+         <button class="carousel__btn" id="rightBtn"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="currentColor" fill-rule="evenodd" d="m9.005 4l8 8l-8 8L7 18l6.005-6L7 6z"/></svg></button>
       </div>
       `;
    slider.className = 'body-carousel';
 
    const carousel = slider.querySelector('.carousel');
-   
+   const carousel_clases = ['carousel__item--left-end', 
+                            'carousel__item--left', 
+                            'carousel__item--main', 
+                            'carousel__item--right', 
+                            'carousel__item--right-end'];
    if (carousel) {
       const children = carousel.children;
-      children[0].classList.add('carousel__item--left');
-      children[1].classList.add('carousel__item--main');
-      children[2].classList.add('carousel__item--right');
+      children[0].classList.add('carousel__item--left-end');
+      children[1].classList.add('carousel__item--left');
+      children[2].classList.add('carousel__item--main');
+      children[3].classList.add('carousel__item--right');
+      children[4].classList.add('carousel__item--right-end');
    };
 
-   const carouselItems = slider.querySelectorAll('.carousel__item');
-   let currentItem = slider.querySelector('.carousel__item--main');
+   // const carouselItems = slider.querySelectorAll('.carousel__item');
+   // let currentItem = slider.querySelector('.carousel__item--main');
    const leftBtn = slider.querySelector('#leftBtn');
    const rightBtn = slider.querySelector('#rightBtn');
+   let index_array = [];
+   for (let i = 0; i < slider_images.length; i++) {
+      index_array.push(i);
+   }
 
    rightBtn.addEventListener('click', function () {
-      currentItem = slider.querySelector('.carousel__item--right');
-      const leftItem = slider.querySelector('.carousel__item--main');
-
-      carouselItems.forEach(item => {
-         item.className = 'carousel__item';
-      });
-
-      currentItem.classList.add('carousel__item--main');
-      leftItem.classList.add('carousel__item--left');
-
-      const currentId = Array.from(carouselItems).indexOf(currentItem);
-      const rightItem = currentId === carouselItems.length - 1 ? carouselItems[0] : carouselItems[currentId + 1];
-      rightItem.classList.add('carousel__item--right');
+      const carousel = slider.querySelector('.carousel');
+      const children = carousel.children;
+      for (let i = 0; i < children.length; i++) {
+         children[i].className = 'carousel__item';
+      }
+      let first_element = index_array.shift();
+      index_array.push(first_element);
+      for (let i = 0; i < index_array.length; i++) {
+         children[index_array[i]].classList.add(carousel_clases[i]);
+      }
    });
 
    leftBtn.addEventListener('click', function () {
-      currentItem = slider.querySelector('.carousel__item--left');
-      const rightItem = slider.querySelector('.carousel__item--main');
-
-      carouselItems.forEach(item => {
-         item.className = 'carousel__item';
-      });
-
-      currentItem.classList.add('carousel__item--main');
-      rightItem.classList.add('carousel__item--right');
-
-      const currentId = Array.from(carouselItems).indexOf(currentItem);
-      const leftItem = currentId === 0 ? carouselItems[carouselItems.length - 1] : carouselItems[currentId - 1];
-      leftItem.classList.add('carousel__item--left');
+      const carousel = slider.querySelector('.carousel');
+      const children = carousel.children;
+      for (let i = 0; i < children.length; i++) {
+         children[i].className = 'carousel__item';
+      }
+      index_array.unshift(index_array.pop());
+      console.log(index_array);
+      for (let i = 0; i < index_array.length; i++) {
+         children[index_array[i]].classList.add(carousel_clases[i]);
+      }
    });
 
    return slider;
