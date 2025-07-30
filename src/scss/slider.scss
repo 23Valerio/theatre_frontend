@@ -19,13 +19,14 @@
    width: auto;
    border-radius: 10px;
    overflow: hidden;
-   box-shadow: 0 1rem 4rem rgba(0,0,0,1);
+   box-shadow: 0 1rem 4rem rgb(0, 0, 0);
    position: absolute;
    top: 50%;
    left: 50%;
    transform: translate(-50%,-50%) scale(.1);
    z-index: 0;
    transition: all 1s ease-in-out;
+   border: 2px solid #363636;
 
    img {
       width: 100%;
@@ -67,17 +68,18 @@
    transform: translate(0%,-50%) scale(.8);
    z-index: 1;
 }
-.carousel__item--left img, .carousel__item--right img {
+.carousel__item--left img, 
+.carousel__item--right img,
+.carousel__item--left-end img,
+.carousel__item--right-end img {
    filter: grayscale(80%);
 }
-
 
 .carousel__item--main:hover {
    transform: translate(-50%,-50%) scale(1.1);
 }
 
 .carousel__btns {
-   
    position: absolute;
    bottom: 0;
    left: 50%;

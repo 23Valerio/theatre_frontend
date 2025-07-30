@@ -1,5 +1,4 @@
 
-
 export function createShows(list_of_shows) {
     const shows = document.createElement('div');
     shows.className = 'shows';
@@ -26,14 +25,19 @@ export function createShows(list_of_shows) {
         const show_img = document.createElement('img');
         show_img.className = "show-img";
         show_img.src  = show['image']
+        show_card.appendChild(show_img);
 
+        const show_info = document.createElement('div');
+        show_info.className = "show-info";
+        show_card.appendChild(show_info);
 
-        const show_name = document.createElement('p');
+        const show_name = document.createElement('h3');
         show_name.className = "show-name";
         show_name.textContent = show['name'];
+        show_info.appendChild(show_name);
 
-        show_card.appendChild(show_img);
-        show_card.appendChild(show_name);
+
+
         container.appendChild(show_card);
         });
     return shows;
