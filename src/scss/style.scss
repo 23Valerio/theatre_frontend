@@ -1,12 +1,16 @@
 @use './header';
 @use './slider';
 @use './shows';
-
+@use './footer';
+@use './about';
+@import url('https://fonts.googleapis.com/css2?family=Old+Standard+TT:ital,wght@0,400;0,700;1,400&display=swap');
 * {
    margin: 0;
    padding: 0;
    box-sizing: border-box;
    font-family: sans-serif;
+   /* ПОКАЗУЄ ЛІНІЇ ДЛЯ ЕЛЕМЕНТІВ ВИДАЛИТИ !!!!! */
+  //  outline: 1px solid rgba(255, 0, 0, 0.1); 
  }
  
  html {
@@ -18,7 +22,6 @@
  
 body {
   width: 100%;
-  height: 100%;
   background-color: #111;
   font-size: 1rem;
   line-height: 1.5;
@@ -28,12 +31,15 @@ body {
   text-align: center;
  }
 
- #app {
+.main-container{
     width: 80%;
-    height: 100%;
     display: flex;
     flex-direction: column;
+}
 
+ #app {
+    display: flex;
+    flex-direction: column;
  }
  
  li {
@@ -84,3 +90,10 @@ body {
    margin: 0;
  }
  
+h1 {
+    color: #f0a420;
+    font-family: "Old Standard TT", serif;
+    font-size: 36px;
+    text-align: center; 
+    margin-top: 20px;
+}

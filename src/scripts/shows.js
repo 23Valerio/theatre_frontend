@@ -3,15 +3,11 @@ export function createShows(list_of_shows) {
     const shows = document.createElement('div');
     shows.className = 'shows';
     
-    const title_tresk = document.createElement('p');
-    title_tresk.className = "title";
-    title_tresk.textContent = "Молодой Пражский театр Треск!";
-    
     const program_tresk = document.createElement('p');
     program_tresk.className = "title";
     program_tresk.textContent = "Программа:";
 
-    shows.appendChild(title_tresk);
+    // shows.appendChild(title_tresk);
     shows.appendChild(program_tresk);
 
     const container = document.createElement('div');
@@ -22,21 +18,14 @@ export function createShows(list_of_shows) {
         const show_card = document.createElement('div');
         show_card.className = "show-card";
         
+        const show_link = document.createElement('a');
+        show_link.href = `/show/${show['id']}`;
+        show_card.appendChild(show_link);
+
         const show_img = document.createElement('img');
         show_img.className = "show-img";
         show_img.src  = show['image']
-        show_card.appendChild(show_img);
-
-        const show_info = document.createElement('div');
-        show_info.className = "show-info";
-        show_card.appendChild(show_info);
-
-        const show_name = document.createElement('h3');
-        show_name.className = "show-name";
-        show_name.textContent = show['name'];
-        show_info.appendChild(show_name);
-
-
+        show_link.appendChild(show_img);
 
         container.appendChild(show_card);
         });

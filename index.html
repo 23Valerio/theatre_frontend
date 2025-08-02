@@ -3,11 +3,55 @@
   <head>
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/lightgallery/2.8.3/css/lightgallery.min.css" integrity="sha512-QMCloGTsG2vNSnHcsxYTapI6pFQNnUP6yNizuLL5Wh3ha6AraI6HrJ3ABBaw6SIUHqlSTPQDs/SydiR98oTeaQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Треск!</title>
   </head>
   <body>
-    <div id="app"></div>
+    <div class="main-container">
+      <header class="site-header">
+        <div class="header-container">
+          <img class="logo" src="/Logo_Tresk.svg">   
+          <button class="burger" aria-label="Toggle menu">
+            <span></span><span></span><span></span>
+            </button>
+            <nav class="main-nav">
+              <ul>
+                <li><a href="#" data-route="home">Главная</a></li>
+                <li><a href="#" data-route="program">Программа</a></li>
+                <li><a href="#" data-route="about">О нас</a></li>
+                <!-- <li><a href="#">Билеты</a></li> -->
+                <li><a href="#" data-route="contacts">Контакты</a></li>
+                <li><a href="#" data-route="partners">Партнеры</a></li>
+              </ul>
+            </nav>
+            <a href="#" class="btn">Войти</a>
+        </div>
+      </header>
+      
+      <div id="app"></div>
+
+      <footer>
+        <div class="footer-container">
+            <div class="footer-logo">
+              <a href="https://github.com/23Valerio">Powered by Valerii Kuiovda</a>
+            </div>
+            <div class="footer-links">
+              <a href="https://www.facebook.com/profile.php?id=61552132769348">
+                <img src="Facebook.svg" alt="">
+              </a>
+              <a href="https://www.instagram.com/teatr.tresk/">
+                <img src="Instagram.svg" alt="">
+              </a>
+              <a href="#">
+                <img src="Linkedin.svg" alt="">
+              </a>
+            </div>
+        </div>
+      </footer>
+    </div>
+
+    
     <script type="module" src="/src/main.js"></script>
   </body>
 </html>

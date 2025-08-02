@@ -40,6 +40,7 @@
    transform: translate(-50%,-50%) scale(1);
    z-index: 3;
    cursor: pointer;
+   
    img{
       filter: none;  
    }
@@ -86,7 +87,6 @@
    z-index: 3;
    transform: translateX(-1rem);
    display: flex;
-   width: 70%;
    gap: 1rem;
 }
 .carousel__btn {
@@ -103,5 +103,6 @@
    width: 1.8rem;
 }
 .carousel__btn:hover {
-   color: #aaa;
+   color: #3a3a3a;
+   border:1px solid #3a3a3a;
 }

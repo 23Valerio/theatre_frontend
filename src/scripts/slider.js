@@ -1,18 +1,16 @@
-import { slider_images } from '../variables.js';
+// import { slider_images } from '../variables.js';
 
-
-
-function sliderImagesHtml(slider_images) {
+function sliderImagesHtml(list_of_images) {
    let slider_html = '';
-   for (let i = 0; i < slider_images.length; i++) {
-      slider_html += '\n<div class="carousel__item"> \n<img src="' +
-                     slider_images[i] +
+   for (let i = 0; i < list_of_images.length; i++) {
+      slider_html += '\n<div class="carousel__item"> \n<img src="slider/' +
+                     list_of_images[i] +
                      '" alt="tresk image">\n</div>'
     }
     return slider_html
 }
 
-export function createSlider() {
+export function createSlider(slider_images) {
    const slider = document.createElement('div');
    slider.innerHTML = `
       <div class="carousel">
@@ -40,8 +38,6 @@ export function createSlider() {
       children[4].classList.add('carousel__item--right-end');
    };
 
-   // const carouselItems = slider.querySelectorAll('.carousel__item');
-   // let currentItem = slider.querySelector('.carousel__item--main');
    const leftBtn = slider.querySelector('#leftBtn');
    const rightBtn = slider.querySelector('#rightBtn');
    let index_array = [];
