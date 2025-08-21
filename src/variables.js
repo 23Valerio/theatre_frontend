@@ -1,54 +1,67 @@
-export const slider_images = ["1.jpg", "2.jpg", "3.jpg", "4.jpg", "5.jpg", "6.jpg", "7.jpg", "8.jpg"];
+export const slider_images = ["1.jpg", "2.jpg", "3.jpg", "4.jpg", "5.jpg", "6.jpg"];
 
-export const gallery_images = ["1.jpg", "2.jpg", "3.jpg", "4.jpg", "5.jpg", "6.jpg", "7.jpg", "8.jpg"];
+export const gallery_images = [  "gallery/1.jpg", 
+                                 "gallery/2.jpg", 
+                                 "gallery/3.jpg", 
+                                 "gallery/4.jpg", 
+                                 "gallery/5.jpg", 
+                                 "gallery/6.jpg", 
+                                 "gallery/7.jpg", 
+                                 "gallery/8.jpg"];
 
 export const theatre_shows = [
    {
      "id": 1,
      "name": "Я здесь не надолго",
-     "place": "DIVADLO BEZ HRANIC",
+     "place": "Divadlo bez hranic",
      "date": "2025-07-20T19:00:00Z",
      "created_at": "2025-07-13T08:40:18.628306Z",
-     "image": "shows/I_wont_be_here_long.jpg"
+     "image": "shows/I_wont_be_here_long.jpg",
+     "tickets_available": "50",
    },
    {
       "id": 2,
       "name": "Кровь, любовь и риторика",
-      "place": "DIVADLO KAMEN",
+      "place": "Divadlo Kamen",
       "date": "2025-08-20T19:00:00Z",
       "created_at": "2025-07-13T08:40:18.628306Z",
-      "image": "shows/Blood love and rhetoric.jpg"
+      "image": "shows/Blood love and rhetoric.jpg",
+      "tickets_available": "50",
    },
    {
       "id": 3,
       "name": "Фо Фи Фефь",
-      "place": "DIVADLO KAMEN",
+      "place": "Divadlo Kamen",
       "date": "2025-08-25T20:00:00Z",
       "created_at": "2025-07-13T08:40:18.628306Z",
-      "image": "shows/Fo Fi Fef.jpg"
+      "image": "shows/Fo Fi Fef.jpg",
+      "tickets_available": "50",
    }  ,
    {
       "id": 4,
       "name": "Женщина в песках",
-      "place": "DIVADLO KAMEN",
+      "place": "Divadlo Kamen",
       "date": "2025-08-20T19:00:00Z",
       "created_at": "2025-07-13T08:40:18.628306Z",
-      "image": "shows/Woman in the Sands.jpg"
+      "image": "shows/Woman in the Sands.jpg",
+      "tickets_available": "50",
    },
    {
       "id": 5,
       "name": "ИСТИНА и не",
-      "place": "DIVADLO KAMEN",
+      "place": "Divadlo Kamen",
       "date": "2025-09-20T19:00:00Z",
       "created_at": "2025-07-13T08:40:18.628306Z",
-      "image": "shows/Truth and not.jpg"
+      "image": "shows/Truth and not.jpg",
+      "tickets_available": "50",
    },
    {
       "id": 6,
       "name": "Присутствие кошки в доме",
-      "place": "DIVADLO KAMEN",
+      "place": "Divadlo Kamen",
       "date": "2025-08-29T19:00:00Z",
       "created_at": "2025-07-13T08:40:18.628306Z",
-      "image": "shows/The presence of a cat in the house.jpg"
+      "image": "shows/The presence of a cat in the house.jpg",
+      "tickets_available": "0",
    },
  ]

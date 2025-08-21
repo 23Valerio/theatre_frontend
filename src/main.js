@@ -2,6 +2,8 @@ import './scss/style.scss'
 import { gallery_images } from './variables.js';
 import { createGallery } from './scripts/about.js';
 import { createHome } from './scripts/home.js';
+import { createProgram } from './scripts/program.js';
+import { theatre_shows } from './variables.js';
 
 async function loadContent(route) {
   const app = document.getElementById('app');
@@ -20,12 +22,11 @@ async function loadContent(route) {
       content = await (await fetch('/src/components/about.html')).text();
       app.innerHTML = content; 
       const gallery = document.getElementById('gallery');
-      gallery.appendChild(createGallery(gallery_images));
-
+      createGallery(gallery, gallery_images)
       break;
     case 'program':
-      content = await (await fetch('/src/components/program.html')).text();
-      app.innerHTML = content; 
+      app.innerHTML = '';
+      createProgram(app, theatre_shows);
       break;
     case 'partners':
       content = await (await fetch('/src/components/partners.html')).text();
@@ -36,8 +37,6 @@ async function loadContent(route) {
       app.innerHTML = '';
       app.appendChild(content);
   }
-
-
 }
 
 // Обработка кликов по ссылкам
@@ -60,19 +59,4 @@ window.addEventListener('popstate', () => {
 window.addEventListener('load', () => {
   loadContent(window.location.hash.slice(1) || 'home');
 });
-
-
-
-
-
-
-// document.addEventListener('DOMContentLoaded', () => {
-//   const app = document.getElementById('app');
-    
-//   const title_tresk = document.createElement('h1');
-//   title_tresk.textContent = "Молодой Пражский театр Треск!";
-//   app.appendChild(title_tresk);
-//   app.append(createSlider());
-//   app.append(createShows(theatre_shows));
-// });
 
