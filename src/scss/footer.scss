@@ -1,5 +1,6 @@
 footer {
     width: 100%;
+    margin-top: auto;
 
     .footer-container {
         display: flex;
@@ -8,6 +9,7 @@ footer {
         padding: 15px;
         color: #f0a420;
         border-top: 1px solid #4B4136;
+        
 
         .footer-logo {
             font-size: 12px;
@@ -23,7 +25,7 @@ footer {
             a {
                 text-decoration: none;
                 padding: 10px;
-                border: 1px solid #ACA592;
+                border: 1px solid #f0a420;
                 
                 img {
                     width: 20px;

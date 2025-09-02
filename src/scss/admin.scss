@@ -1,0 +1,44 @@
+.admin-container {
+    
+}
+
+
+.admin-workplace {
+    display: flex;
+    flex-direction: row;
+    height: 100%;
+}
+
+.view {
+    flex: 4;
+    padding: 20px;
+    border-left: 1px solid #4B4136;
+}
+
+
+.admin-navigation {
+    flex: 1;
+
+    ul {
+        display: flex;
+        flex-direction: column;
+        padding: 0;
+        margin: 0;
+        gap: 10px;
+      li a {
+        color: #f0a420;
+        font-size: 18px;
+        font-weight: 600;
+ 
+        &:hover {
+          color: #583801;
+        }
+      }
+    }
+}
+
+.active-link {
+    color: #583801;
+    font-weight: 700;
+    padding: 5px 0px;
+}

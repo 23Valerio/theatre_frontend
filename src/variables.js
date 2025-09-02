@@ -1,4 +1,15 @@
-export const slider_images = ["1.jpg", "2.jpg", "3.jpg", "4.jpg", "5.jpg", "6.jpg"];
+export const slider_images = ["1.jpg", 
+                              "2.jpg", 
+                              "3.jpg", 
+                              "4.jpg", 
+                              "5.jpg", 
+                              "6.jpg",
+                              "7.jpg",
+                              "8.jpg",
+                              "9.jpg",
+                              "10.jpg",
+                              "11.jpg",
+                              "12.jpg",];
 
 export const gallery_images = [  "gallery/1.jpg", 
                                  "gallery/2.jpg", 
@@ -7,7 +18,8 @@ export const gallery_images = [  "gallery/1.jpg",
                                  "gallery/5.jpg", 
                                  "gallery/6.jpg", 
                                  "gallery/7.jpg", 
-                                 "gallery/8.jpg"];
+                                 "gallery/8.jpg",
+                                 "gallery/9.jpg",];
 
 export const theatre_shows = [
    {

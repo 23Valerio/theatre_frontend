@@ -4,38 +4,52 @@ import { createGallery } from './scripts/about.js';
 import { createHome } from './scripts/home.js';
 import { createProgram } from './scripts/program.js';
 import { theatre_shows } from './variables.js';
+import { initAdminPage } from './scripts/admin.js';
 
 async function loadContent(route) {
   const app = document.getElementById('app');
   let content;
 
-  switch (route) {
-    case 'home':
+    switch (route) {
+    case '/':
+    case '/home':
       app.innerHTML = '';
       createHome(app);
       break;
-    case 'contacts':
+
+    case '/contacts':
       content = await (await fetch('/src/components/contacts.html')).text();
-      app.innerHTML = content; 
+      app.innerHTML = content;
       break;
-    case 'about':
+
+    case '/about':
       content = await (await fetch('/src/components/about.html')).text();
-      app.innerHTML = content; 
+      app.innerHTML = content;
       const gallery = document.getElementById('gallery');
-      createGallery(gallery, gallery_images)
+      createGallery(gallery, gallery_images);
       break;
-    case 'program':
+
+    case '/program':
       app.innerHTML = '';
       createProgram(app, theatre_shows);
+      app.appendChild(createProgram(app, theatre_shows));
       break;
-    case 'partners':
+
+    case '/partners':
       content = await (await fetch('/src/components/partners.html')).text();
-      app.innerHTML = content; 
-      break;  
+      app.innerHTML = content;
+      break;
+
+    case '/admin':
+      content = await (await fetch('/src/components/admin.html')).text();
+      app.innerHTML = content;
+      
+      initAdminPage();
+      break;
+
     default:
-      content = createHome();
       app.innerHTML = '';
-      app.appendChild(content);
+      createHome(app);
   }
 }
 
@@ -44,19 +58,18 @@ document.addEventListener('click', (e) => {
   if (e.target.tagName === 'A' && e.target.getAttribute('data-route')) {
     e.preventDefault(); // Предотвращаем стандартное поведение ссылки
     const route = e.target.getAttribute('data-route');
+    history.pushState({}, '', route);    
     loadContent(route);
-    history.pushState({ route }, '', `#${route}`); // Обновляем URL без перезагрузки
   }
 });
 
 // Обработка изменения URL (назад/вперед в браузере)
 window.addEventListener('popstate', () => {
-  const hash = window.location.hash.slice(1) || 'home';
-  loadContent(hash);
+  loadContent(window.location.pathname || '/');
 });
 
 // Инициализация при загрузке страницы
 window.addEventListener('load', () => {
-  loadContent(window.location.hash.slice(1) || 'home');
+  loadContent(window.location.pathname || '/');
 });
 
