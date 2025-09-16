@@ -1,4 +1,3 @@
-
 export function createShows(list_of_shows) {
     const shows = document.createElement('div');
     shows.className = 'shows';
@@ -7,7 +6,6 @@ export function createShows(list_of_shows) {
     program_tresk.className = "title";
     program_tresk.textContent = "Программа:";
 
-    // shows.appendChild(title_tresk);
     shows.appendChild(program_tresk);
 
     const container = document.createElement('div');

@@ -1,11 +1,8 @@
-// import { slider_images } from '../variables.js';
-
 function sliderImagesHtml(list_of_images) {
    let slider_html = '';
    for (let i = 0; i < list_of_images.length; i++) {
-      slider_html += '\n<div class="carousel__item"> \n<img src="slider/' +
-                     list_of_images[i] +
-                     '" alt="tresk image">\n</div>'
+      slider_html += '\n<div class="carousel__item"> \n<img src="' +
+                     list_of_images[i] + '" alt="tresk image">\n</div>'
     }
     return slider_html
 }

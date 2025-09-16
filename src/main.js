@@ -1,10 +1,11 @@
 import './scss/style.scss'
-import { gallery_images } from './variables.js';
 import { createGallery } from './scripts/about.js';
 import { createHome } from './scripts/home.js';
 import { createProgram } from './scripts/program.js';
-import { theatre_shows } from './variables.js';
 import { initAdminPage } from './scripts/admin.js';
+
+
+
 
 async function loadContent(route) {
   const app = document.getElementById('app');
@@ -25,14 +26,12 @@ async function loadContent(route) {
     case '/about':
       content = await (await fetch('/src/components/about.html')).text();
       app.innerHTML = content;
-      const gallery = document.getElementById('gallery');
-      createGallery(gallery, gallery_images);
+      createGallery();
       break;
 
     case '/program':
       app.innerHTML = '';
-      createProgram(app, theatre_shows);
-      app.appendChild(createProgram(app, theatre_shows));
+      createProgram(app);
       break;
 
     case '/partners':
@@ -43,7 +42,6 @@ async function loadContent(route) {
     case '/admin':
       content = await (await fetch('/src/components/admin.html')).text();
       app.innerHTML = content;
-      
       initAdminPage();
       break;
 

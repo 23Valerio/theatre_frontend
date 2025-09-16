@@ -1,5 +1,13 @@
-export function createGallery(gallery, gallery_images) {
-    const container = gallery;
+import { fetchGetApiEndpointData } from './get_api_server_data.js';
+import { parseDataForImages } from './parse_data_for_images.js';
+import { API_GALLERY_ENDPOINT } from '../variables.js';
+
+export async function createGallery() {
+    
+    const container = document.getElementById('gallery');
+    const gallery_data = await fetchGetApiEndpointData(API_GALLERY_ENDPOINT);
+    const gallery_images = await parseDataForImages(gallery_data);
+
 
     const popup_container = document.createElement('div');
     popup_container.classList.add('popup-container');  

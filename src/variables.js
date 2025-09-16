@@ -1,3 +1,12 @@
+export const API_BASE_URL = "http://127.0.0.1:8000/api/";
+export const API_ADMIN_ENDPOINT = "admin/";
+export const API_SHOWS_ENDPOINT = "shows/";
+export const API_GALLERY_ENDPOINT = "gallery/";
+export const API_SLIDER_ENDPOINT = "slider/";
+
+
+
+
 export const slider_images = ["1.jpg", 
                               "2.jpg", 
                               "3.jpg", 

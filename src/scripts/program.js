@@ -1,8 +1,11 @@
-export function createProgram(app, programData) {
+import { fetchGetApiEndpointData } from './get_api_server_data.js';
+import { API_SHOWS_ENDPOINT } from '../variables.js';
 
-
+export async function createProgram(app) {
     const title = document.createElement('h2');
     title.textContent = 'Программа спектаклей';
+
+    const programData = await fetchGetApiEndpointData(API_SHOWS_ENDPOINT);
     app.appendChild(title);
 
     const programList = document.createElement('div');
@@ -48,7 +51,7 @@ export function createProgram(app, programData) {
         card_info.appendChild(card_place);
 
         const card_tickets = document.createElement('p');
-        card_tickets.textContent = `Доступно билетов: ${program.tickets_available}`;
+        card_tickets.textContent = `Доступно билетов: ${program.tickets_count}`;
         card_info.appendChild(card_tickets);
 
 
