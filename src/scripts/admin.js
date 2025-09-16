@@ -1,8 +1,8 @@
 import { fetchGetApiEndpointData } from "./get_api_server_data";
-import { parseDataForImages } from "./parse_data_for_images.js";
 import { deleteRequestByID } from "./delete_request_by_ID.js";
+import { sendPatchDataShow } from "./send_patch_show.js";
+import { sendPatchImage } from "./send_patch_image.js";
 import { API_GALLERY_ENDPOINT, API_SHOWS_ENDPOINT, API_SLIDER_ENDPOINT, API_BASE_URL } from "../variables";
-
 
 
 export function initAdminPage() {
@@ -54,8 +54,21 @@ function createAdminsImageGallery(data, api_endpoint) {
     gallery.appendChild(image_gallery);
 }
 
-function changeShowViewByID(id, img_url) {
+
+function collectData(show_card) {
+    return {
+        name: show_card.querySelector('#name').value,
+        description: show_card.querySelector('#description').value,
+        place: show_card.querySelector('#place').value,
+        date: new Date(show_card.querySelector('#date').value).toISOString(),
+    };
+}
+
+
+function changeShowViewByID(id, show_data) {
     const show_card = document.querySelector(`button[id='${id}']`).closest('.admin-show-card');
+    const change_btn = show_card.querySelector(`button[name='${id}_change']`);
+    change_btn.disabled = true;
     const inputs = show_card.querySelectorAll('input');
     inputs.forEach(input => {
         input.readOnly = false;
@@ -65,10 +78,12 @@ function changeShowViewByID(id, img_url) {
     });
 
     const date_input = show_card.querySelector('#date');
-    date_input.type = 'datetime_local';
+    date_input.type = 'datetime-local';
+    console.log("Date" + show_data.date);
+    date_input.value = show_data.date.slice(0,16);
 
     const pre_image = document.createElement('label');
-    pre_image.textContent = 'Изображение: ' + img_url.split('/').pop();
+    pre_image.textContent = 'Изображение: ' + show_data.image.split('/').pop();
     const image = document.createElement('input');
     image.id = 'image';
     image.type = 'file';
@@ -79,15 +94,23 @@ function changeShowViewByID(id, img_url) {
     const confirm_btn = document.createElement('button');
     confirm_btn.textContent = 'Подтвердить';
     confirm_btn.classList.add('show-delete-btn');
+    confirm_btn.type = 'button';
     show_card.querySelector('.admin-info-container').appendChild(confirm_btn);
     confirm_btn.addEventListener('click', () => {
-        changeShowDataByID();
-    });
+        const changed_show_data = collectData(show_card);
+        sendPatchDataShow(API_BASE_URL + API_SHOWS_ENDPOINT, id, changed_show_data);
 
+        const new_image_file = show_card.querySelector('#image');
+        if (new_image_file.files.length > 0 && new_image_file) {
+            sendPatchImage(API_BASE_URL + API_SHOWS_ENDPOINT, id, new_image_file.files[0]);
+        }
+        shows();
+    });
 }
 
 function createAdminsShowsGallery(data, api_endpoint) {
     const view = document.getElementById('view');
+    view.innerHTML = '';
     const shows_container = document.createElement('div');
     shows_container.classList.add('admin-shows-container');
     data.forEach(item => {
@@ -162,10 +185,11 @@ function createAdminsShowsGallery(data, api_endpoint) {
         change_btn.textContent = 'Изменить';
         change_btn.classList.add('show-delete-btn');
         change_btn.id = item.id;
+        change_btn.name = item.id + '_change';
         buttons_container.appendChild(change_btn);
         change_btn.addEventListener('click', () => {
             image_container.remove();
-            changeShowViewByID(change_btn.id, item.image);
+            changeShowViewByID(change_btn.id, item);
         });
 
         const delete_btn = document.createElement('button');
@@ -173,6 +197,7 @@ function createAdminsShowsGallery(data, api_endpoint) {
         delete_btn.classList.add('show-delete-btn');
         delete_btn.classList.add('red-hower');
         delete_btn.id = item.id;
+        delete_btn.name = item.id + '_delete';
         buttons_container.appendChild(delete_btn);
         delete_btn.addEventListener('click', () => {
             image_container.remove();
