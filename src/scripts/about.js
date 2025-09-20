@@ -1,11 +1,11 @@
 import { fetchGetApiEndpointData } from './get_api_server_data.js';
 import { parseDataForImages } from './parse_data_for_images.js';
-import { API_GALLERY_ENDPOINT } from '../variables.js';
+import { API_BASE_URL, API_GALLERY_ENDPOINT } from '../variables.js';
 
 export async function createGallery() {
     
     const container = document.getElementById('gallery');
-    const gallery_data = await fetchGetApiEndpointData(API_GALLERY_ENDPOINT);
+    const gallery_data = await fetchGetApiEndpointData(API_BASE_URL + API_GALLERY_ENDPOINT);
     const gallery_images = await parseDataForImages(gallery_data);
 
 

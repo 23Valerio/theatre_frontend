@@ -1,11 +1,11 @@
 import { fetchGetApiEndpointData } from './get_api_server_data.js';
-import { API_SHOWS_ENDPOINT } from '../variables.js';
+import { API_BASE_URL, API_SHOWS_ENDPOINT } from '../variables.js';
 
 export async function createProgram(app) {
     const title = document.createElement('h2');
     title.textContent = 'Программа спектаклей';
 
-    const programData = await fetchGetApiEndpointData(API_SHOWS_ENDPOINT);
+    const programData = await fetchGetApiEndpointData(API_BASE_URL + API_SHOWS_ENDPOINT);
     app.appendChild(title);
 
     const programList = document.createElement('div');

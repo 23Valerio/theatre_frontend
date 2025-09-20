@@ -2,7 +2,7 @@ import { API_BASE_URL } from '../variables.js';
 
 export async function fetchGetApiEndpointData(api_endpoint) {
     try {
-        const response = await fetch(API_BASE_URL + api_endpoint);
+        const response = await fetch(api_endpoint);
         if (!response.ok) {
             throw new Error('Network response was not ok');
         }
