@@ -3,6 +3,7 @@ export const API_ADMIN_ENDPOINT = "admin/";
 export const API_SHOWS_ENDPOINT = "shows/";
 export const API_GALLERY_ENDPOINT = "gallery/";
 export const API_SLIDER_ENDPOINT = "slider/";
+export const API_FUTURE_SHOWS_ENDPOINT = "shows/future/";
 
 
 

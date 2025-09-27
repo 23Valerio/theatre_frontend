@@ -1,6 +1,7 @@
 import { sendPatchDataShow } from "./send_patch_show.js";
 import { sendPatchImage } from "./send_patch_image.js";
 import { API_BASE_URL, API_SHOWS_ENDPOINT } from "../variables.js";
+import { shows } from "./admin.js";
 
 function collectData(show_card) {
     return {
@@ -42,7 +43,7 @@ export function changeShowViewByID(id, show_data) {
     confirm_btn.classList.add('show-delete-btn');
     confirm_btn.type = 'button';
     show_card.querySelector('.admin-info-container').appendChild(confirm_btn);
-    confirm_btn.addEventListener('click', () => {
+    confirm_btn.addEventListener('click', async () => {
         const changed_show_data = collectData(show_card);
         sendPatchDataShow(API_BASE_URL + API_SHOWS_ENDPOINT, id, changed_show_data);
 
@@ -50,6 +51,6 @@ export function changeShowViewByID(id, show_data) {
         if (new_image_file.files.length > 0 && new_image_file) {
             sendPatchImage(API_BASE_URL + API_SHOWS_ENDPOINT, new_image_file.files[0], id);
         }
-        shows();
+        await shows();
     });
 }

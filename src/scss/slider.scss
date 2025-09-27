@@ -14,6 +14,7 @@
    width: 100%;
    overflow: hidden;
 }
+
 .carousel__item {
    height: 80%;
    width: auto;
@@ -23,61 +24,70 @@
    position: absolute;
    top: 50%;
    left: 50%;
-   transform: translate(-50%,-50%) scale(.1);
-   z-index: 0;
-   transition: all 1s ease-in-out;
    border: 2px solid #363636;
+   display: block;
+   visibility: visible;
+   opacity: 0;
+   transform: translate(-50%, -50%) scale(.8);
+   transition: none;
+}
 
-   img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      filter: grayscale(80%);
-   }
+.carousel__item img {
+   width: 100%;
+   height: 100%;
+   object-fit: cover;
+   transition: filter 0.6s ease-in-out 0.4s;
+   filter: grayscale(80%);
 }
 
 .carousel__item--main {
-   transform: translate(-50%,-50%) scale(1);
+   opacity: 1;
+   transform: translate(-50%, -50%) scale(1);
    z-index: 3;
    cursor: pointer;
-   
-   img{
-      filter: none;  
-   }
+   transition: all 1.2s cubic-bezier(0.33, 1, 0.68, 1),
+               visibility 0.6s ease-in-out;
+}
+
+.carousel__item--main img {
+   filter: none;
 }
 
 .carousel__item--left {
    left: 0px;
-   transform: translate(10vw,-50%) scale(.9);
+   transform: translate(10vw, -50%) scale(.9);
+   opacity: 1;
    z-index: 2;
+   transition: all 1.2s cubic-bezier(0.33, 1, 0.68, 1);
 }
 
 .carousel__item--left-end {
    left: 0px;
-   transform: translate(0%,-50%) scale(.8);
+   transform: translate(0%, -50%) scale(.8);
+   opacity: 1;
    z-index: 1;
+   transition: all 1.2s cubic-bezier(0.33, 1, 0.68, 1);
 }
 
 .carousel__item--right {
    right: 0px;
-   transform: translate(calc(10vw - 50%),-50%) scale(.9);
+   transform: translate(calc(10vw - 50%), -50%) scale(.9);
+   opacity: 1;
    z-index: 2;
+   transition: all 1.2s cubic-bezier(0.33, 1, 0.68, 1);
 }
 
 .carousel__item--right-end {
    right: 0px;
-   transform: translate(0%,-50%) scale(.8);
+   transform: translate(0%, -50%) scale(.8);
+   opacity: 1;
    z-index: 1;
-}
-.carousel__item--left img, 
-.carousel__item--right img,
-.carousel__item--left-end img,
-.carousel__item--right-end img {
-   filter: grayscale(80%);
+   transition: all 1.2s cubic-bezier(0.33, 1, 0.68, 1);
 }
 
 .carousel__item--main:hover {
-   transform: translate(-50%,-50%) scale(1.1);
+   transform: translate(-50%, -50%) scale(1.05);
+   transition: transform 0.8s cubic-bezier(0.33, 1, 0.68, 1);
 }
 
 .carousel__btns {
@@ -89,20 +99,49 @@
    display: flex;
    gap: 1rem;
 }
+
 .carousel__btn {
    background-color: transparent;
    height: 2rem;
    width: 2rem;
    border-radius: 50%;
-   border:1px solid white;
+   border: 1px solid white;
    color: #fff;
    cursor: pointer;
+   transition: all 0.4s ease;
 }
+
 .carousel__btn svg {
    height: 1.8rem;
    width: 1.8rem;
 }
+
 .carousel__btn:hover {
    color: #3a3a3a;
-   border:1px solid #3a3a3a;
+   border: 1px solid #3a3a3a;
+   background-color: white;
+}
+
+.carousel__item--transitioning {
+   transition: all 1.2s cubic-bezier(0.33, 1, 0.68, 1) !important;
+}
+
+.carousel__btn:disabled {
+   opacity: 0.5;
+   cursor: not-allowed;
+}
+
+.carousel__btn:disabled:hover {
+   color: #fff;
+   border: 1px solid white;
+   background-color: transparent;
+}
+
+.carousel__item--animating {
+   transition: transform 1.2s cubic-bezier(0.33, 1, 0.68, 1),
+               left 1.2s cubic-bezier(0.33, 1, 0.68, 1),
+               right 1.2s cubic-bezier(0.33, 1, 0.68, 1),
+               opacity 1.2s cubic-bezier(0.33, 1, 0.68, 1),
+               visibility 1.2s cubic-bezier(0.33, 1, 0.68, 1),
+               box-shadow 1.2s cubic-bezier(0.33, 1, 0.68, 1);
 }

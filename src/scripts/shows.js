@@ -17,7 +17,7 @@ export function createShows(list_of_shows) {
         show_card.className = "show-card";
         
         const show_link = document.createElement('a');
-        show_link.href = `/show/${show['id']}`;
+        show_link.href = `${window.location.origin}/program`;
         show_card.appendChild(show_link);
 
         const show_img = document.createElement('img');

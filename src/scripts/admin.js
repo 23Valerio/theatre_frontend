@@ -36,7 +36,7 @@ export async function slider() {
 
 export async function shows() {
     const shows_data = await fetchGetApiEndpointData(API_BASE_URL + API_SHOWS_ENDPOINT);
-    createAdminsShowsGallery(shows_data, API_BASE_URL + API_SHOWS_ENDPOINT)
+    createAdminsShowsGallery(shows_data)
 }
 
 export async function gallery() {

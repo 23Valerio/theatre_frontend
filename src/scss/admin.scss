@@ -75,7 +75,6 @@
     &:hover {
       background-color: #f75050;
       color: #fff;
-      font-weight: 600;
   }
 }
 
@@ -166,4 +165,29 @@
     margin-top: 15px;
       
   }
+}
+
+.add-show-input {
+    border: 1px solid #f0a420;
+    background-color: #fff;
+    padding: 2px;
+
+}
+
+.filter-header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  border-bottom: 1px solid #4B4136;
+  padding: 20px;
+}
+
+.filters-container {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  color: #f0a420;
+    input[type=checkbox] {
+      accent-color: #f0a420;
+    }
 }
