@@ -3,11 +3,13 @@ import { createGallery } from './scripts/about.js';
 import { createHome } from './scripts/home.js';
 import { createProgram } from './scripts/program.js';
 import { initAdminPage } from './scripts/admin.js';
+import { loginButton } from './scripts/login.js'
 
 
 
 
 async function loadContent(route) {
+  loginButton()
   const app = document.getElementById('app');
   let content;
 
@@ -70,4 +72,7 @@ window.addEventListener('popstate', () => {
 window.addEventListener('load', () => {
   loadContent(window.location.pathname || '/');
 });
+
+//Login
+
 

@@ -1,0 +1,70 @@
+.login-popup-container, .register-popup-container {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 5; /* Sit on top */
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 50%;
+    overflow: auto; /* Enable scroll if needed */
+    background-color: #1a1a1a;
+    padding: 40px;
+    border: #f0a420 1px solid;
+    border-radius: 25px;
+    box-shadow: 0px 0px 25px 23px #88888880;
+}
+
+.login-popup {
+    color: #f0a420;
+    margin: 5px auto; /* 15% from the top and centered */
+    // border: 1px solid #888;
+    width: 80%; /* Could be more or less, depending on screen size */
+
+    input[type=text], input[type=password], 
+    input[type=tel], input[type=email] {
+        width: 100%;
+        padding: 12px 20px;
+        margin: 8px 0;
+        display: inline-block;
+        border: 1px solid #ccc;
+        box-sizing: border-box;
+        color: #ccc;
+    }
+
+    button {
+        background-color: #f0a420;
+        color: white;
+        padding: 14px 20px;
+        margin: 25px 0;
+        border: none;
+        cursor: pointer;
+        width: 100%;
+    }
+}
+
+
+@keyframes animatezoom {
+  from {transform: scale(0)}
+  to {transform: scale(1)}
+}
+
+.animate {
+    animation: animatezoom 0.6s;
+}
+
+
+.login-container {
+    padding: 16px;
+}
+
+
+.close {
+  /* Position it in the top right corner outside of the modal */
+  position: absolute;
+  right: 10px;
+  top: 0;
+  color: #f0a420;
+  font-size: 35px;
+  font-weight: bold;
+  cursor: pointer;
+}

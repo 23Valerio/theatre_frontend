@@ -59,16 +59,18 @@ export async function createProgram(app) {
         buttonsContainer.className = 'buttons-container';
 
         const buyButton = document.createElement('button');
-        buyButton.textContent = 'Купить билет';
+        buyButton.textContent = 'Купить / Забронировать билет';
         buyButton.className = 'button';
-        buyButton.addEventListener('click', () => {});
+        buyButton.addEventListener('click', () => {
+            // Дописать нажатие кнопки!!!
+        });
         buttonsContainer.appendChild(buyButton);
 
-        const reserveButton = document.createElement('button');
-        reserveButton.textContent = 'Забронировать билет';
-        reserveButton.className = 'button';
-        reserveButton.addEventListener('click', () => {});
-        buttonsContainer.appendChild(reserveButton);
+        // const reserveButton = document.createElement('button');
+        // reserveButton.textContent = 'Забронировать билет';
+        // reserveButton.className = 'button';
+        // reserveButton.addEventListener('click', () => {});
+        // buttonsContainer.appendChild(reserveButton);
         card_info.appendChild(buttonsContainer);
 
         if (program.tickets_available === '0') {

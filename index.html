@@ -24,10 +24,50 @@
                 <li><a href="#" data-route="/partners">Партнеры</a></li>
               </ul>
             </nav>
-            <a href="#" class="btn">Войти</a>
+            <div>
+              <a href="" class="btn display-none" id="profile">Мой профиль</a>
+              <a href="" class="btn" id="register">Регистрация</a>
+              <a href="" class="btn border-btn hover-btn" id="login">Войти</a>
+            </div>
+
         </div>
       </header>
-      
+      <div class="login-popup-container">
+        <span class="close" id="login-close-modal">&times;</span>
+        <form class="login-popup">
+           <div class="login-container">
+              <label for="login-uname">Username</label>
+              <input type="text" placeholder="Enter Username" id="login-uname" name="login-uname" required autocomplete="current-password">
+
+              <label for="login-psw">Password</label>
+              <input type="password" placeholder="Enter Password" id="login-psw" name="login-psw" required autocomplete="username">
+
+              <button type="button" id="login-button">Login</button>
+            </div>
+        </form>  
+      </div>
+
+      <div class="register-popup-container">
+        <span class="close" id="register-close-modal">&times;</span>
+        <form class="login-popup">
+           <div class="login-container">
+              <label for="uname">Username</label>
+              <input type="text" placeholder="Enter Username" id="uname" name="uname" required autocomplete="username">
+
+              <label for="psw">Password</label>
+              <input type="password" placeholder="Enter Password" id="psw" name="psw" required autocomplete="new-password">
+
+              <label for="email">Email</label>
+              <input type="email" placeholder="Enter email" id="email" name="email" required autocomplete="email">
+
+              <label for="phone">Phone number</label>
+              <input type="tel" placeholder="Enter phone number" id="phone" name="phone" required autocomplete="tel">
+
+              <button type="submit" id="register-button">Register</button>
+            </div>
+        </form>
+      </div>
+
       <div id="app"></div>
 
       <footer>

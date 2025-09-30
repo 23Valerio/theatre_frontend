@@ -1,8 +1,5 @@
-// @import url('https://fonts.googleapis.com/css2?family=Old+Standard+TT:ital,wght@0,400;0,700;1,400&display=swap');
-
 .site-header {
   background-color: #111;
-  color: white;
   font-family: "Old Standard TT", serif;
   padding: 1rem 0;
   border-bottom: 1px solid #4B4136;
@@ -48,14 +45,22 @@
   }
  
   .btn {
-    padding: 0.6rem 1rem;
-    border: 1px solid #f0a420;
-    text-decoration: none;
+    padding: 10px 20px;
     color: #f0a420;
     font-weight: 500;
-    font-size: 0.9rem;
-    transition: all 0.3s ease;
- 
+    font-size: 14px;
+    border-radius: 10px;
+  }
+
+  .border-btn {
+    border: 1px solid #f0a420;
+  }
+
+  .display-none {
+    display: none;
+  }
+
+  .hover-btn {
     &:hover {
       background-color: #f0a420;
       color: #111;
@@ -75,7 +80,7 @@
       display: block;
       width: 25px;
       height: 3px;
-      background-color: #fff;
+      background-color: #f0a420;
       border-radius: 3px;
     }
   }
