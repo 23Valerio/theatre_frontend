@@ -191,3 +191,51 @@
       accent-color: #f0a420;
     }
 }
+
+.ticket-container {
+  padding: 20px;
+  color: #f0a420;
+}
+
+.tickets-table {
+  padding: 20px;
+  color: #f0a420;
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: left;  
+  }
+  th, td {
+    border: 2px solid #4B4136;
+    padding: 8px 12px;
+  }
+  th {
+    background-color: #583801;
+    text-align: center;
+  }
+}
+
+.purchased-tickets {
+    text-align: left;
+    padding-top: 10px;
+    color: #f0a420;
+}
+
+.tickets-title {
+    
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+
+.show-ticket {
+    padding-left: 20px;
+    padding-bottom: 10px;
+}
+
+.tickets-show-name {
+    font-size: 18px;
+}
+
+.tickets-show-date {
+    font-size: 14px;
+}

@@ -7,6 +7,13 @@ h2 {
     padding-top: 20px;
 }
 
+h3 {
+    text-align: center;
+    color: #f0a420;
+    margin-bottom: 10px;
+    font-size: 18px;
+}
+
 
 .program-list {
     width: 100%;
@@ -90,6 +97,58 @@ h2 {
         }
     }
 }
+
+
+.buy-popup-container {
+    display: none;
+    flex-direction: column;
+    position: fixed;
+    z-index: 5; 
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 50%;
+    overflow: hidden; 
+    background-color: #1a1a1a;
+    padding: 40px;
+    border: #f0a420 1px solid;
+    border-radius: 25px;
+    box-shadow: 0px 0px 25px 23px #88888880;
+    color: #f0a420;
+}
+
+.buy-popup-title {
+    margin-bottom: 10px;
+}
+
+.buy-ticket-container {
+    color: #f0a420;
+    margin: 5px auto;
+    width: 80%;
+
+    input[type=text],input[type=tel],
+    input[type=email] {
+        width: 100%;
+        padding: 12px 20px;
+        margin: 8px 0;
+        display: inline-block;
+        border: 1px solid #ccc;
+        box-sizing: border-box;
+        color: #ccc;
+    }
+
+    button {
+        background-color: #f0a420;
+        color: white;
+        padding: 14px 20px;
+        margin: 25px 0;
+        border: none;
+        cursor: pointer;
+        width: 100%;
+    }
+}
+
+
 
 @media (max-width: 1024px) {
   .program-list {

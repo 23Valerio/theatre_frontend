@@ -1,5 +1,6 @@
 import { fetchGetApiEndpointData } from './get_api_server_data.js';
 import { API_BASE_URL, API_FUTURE_SHOWS_ENDPOINT } from '../variables.js';
+import { buyTicketButton } from './buy_ticket_button.js';
 
 export async function createProgram(app) {
     const title = document.createElement('h2');
@@ -61,16 +62,14 @@ export async function createProgram(app) {
         const buyButton = document.createElement('button');
         buyButton.textContent = 'Купить / Забронировать билет';
         buyButton.className = 'button';
-        buyButton.addEventListener('click', () => {
+        buyButton.addEventListener('click', (e) => {
+            
             // Дописать нажатие кнопки!!!
+            console.log(program.id)
+            buyTicketButton(program.id);
         });
         buttonsContainer.appendChild(buyButton);
 
-        // const reserveButton = document.createElement('button');
-        // reserveButton.textContent = 'Забронировать билет';
-        // reserveButton.className = 'button';
-        // reserveButton.addEventListener('click', () => {});
-        // buttonsContainer.appendChild(reserveButton);
         card_info.appendChild(buttonsContainer);
 
         if (program.tickets_available === '0') {
@@ -86,6 +85,28 @@ export async function createProgram(app) {
     });
     
     app.appendChild(programList);
-  
+
+    const buyPopupContainer = document.createElement('div');
+    buyPopupContainer.classList = 'buy-popup-container';
+    buyPopupContainer.id = 'buy-popup-container';
+    buyPopupContainer.innerHTML = `
+            <span class="close" id="buy-popup-close-modal">&times;</span>
+            <p class="buy-popup-title">Резервация билета</p>
+            <div class="buy-ticket-show-info" id="buy-ticket-show-info"></div>
+            <form class="buy-ticket-popup">
+                <div class="buy-ticket-container">
+                    <label for="buyer-name">Имя</label>
+                    <input type="text" placeholder="Ведите имя" id="buyer-name" name="buyer-name" required">
+
+                    <label for="buyer-email">Электронная почта</label>
+                    <input type="text" placeholder="Введите почту" id="buyer-email" name="buyer-email" required">
+
+                    <label for="buyer-phone">Телефон</label>
+                    <input type="tel" placeholder="Введите номер телефона" id="buyer-phone" name="buyer-phone" required">
+
+                    <button type="submit" id="buy-ticket-button">Подтвердить</button>
+                </div>
+            </form> `;
+    app.appendChild(buyPopupContainer)
 
 }

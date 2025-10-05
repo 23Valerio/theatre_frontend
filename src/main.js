@@ -4,12 +4,10 @@ import { createHome } from './scripts/home.js';
 import { createProgram } from './scripts/program.js';
 import { initAdminPage } from './scripts/admin.js';
 import { loginButton } from './scripts/login.js'
+import { initUserProfilePage } from './scripts/init_user_profile_page.js'
 
 
-
-
-async function loadContent(route) {
-  loginButton()
+export async function loadContent(route) {
   const app = document.getElementById('app');
   let content;
 
@@ -47,6 +45,11 @@ async function loadContent(route) {
       initAdminPage();
       break;
 
+    case '/userprofile':
+      app.innerHTML = '';
+      initUserProfilePage();
+      break;
+
     default:
       app.innerHTML = '';
       createHome(app);
@@ -70,9 +73,8 @@ window.addEventListener('popstate', () => {
 
 // Инициализация при загрузке страницы
 window.addEventListener('load', () => {
+  loginButton();
   loadContent(window.location.pathname || '/');
 });
-
-//Login
 
 

@@ -1,4 +1,7 @@
 import { userLoginRequest } from './user_login_request.js'
+import { userRegisterRequest } from './user_register_request.js'
+import { loadContent } from '../main.js'
+
 
 export async function loginButton() {
     const login_button = document.getElementById('login');
@@ -35,32 +38,84 @@ export async function loginButton() {
 
     const login_form_button = document.getElementById('login-button');
     login_form_button.addEventListener('click', async (e) => {
+        e.preventDefault();
         const data_login = document.querySelector('.login-popup-container');
         const user = data_login.querySelector('#login-uname').value;
         const password = data_login.querySelector('#login-psw').value;
         console.log(user, password);
         
-        try {
-            const result = await userLoginRequest(user, password);
-            login_popup.style.display = "none";
-            register_button.style.display = "none";
-            profile_button.style.display = "inline-block";
-            profile_button.innerHTML = user;
-            login_button.innerHTML = "Выйти";
+        data_login.querySelectorAll(".error").forEach(el => el.remove());    
 
-        } catch (error) {
-            alert("Login failed: " + error.message);
-        }
+        const result = await userLoginRequest(user, password);
         
+        if (!result.success) {
+           console.log("IF LOGIN NOT OK",result)
+            // check for errors
+            if (result.errors.non_field_errors) {
+                const errorEl = document.createElement("div");
+                errorEl.classList.add("error");
+                errorEl.style.color = "red";
+                errorEl.textContent = result.errors.non_field_errors[0];
+                data_login.querySelector(".login-container").appendChild(errorEl);
+            }
+            return;
+        }
+            login_popup.style.display = 'none';
+            login_button.innerHTML = 'Выйти';
+            register_button.style.display = "none";
+            profile_button.style.fontWeight = "bolder"
+            profile_button.innerHTML = user;
+            profile_button.style.display = "inline-block";
     }); 
 
-
     const register_form_button = document.getElementById('register-button');
+    register_form_button.addEventListener('click', async (e) => {
+        e.preventDefault();
+        const data_register = document.querySelector('.register-popup-container');
+        const user = data_register.querySelector('#register-username').value;
+        const password = data_register.querySelector('#register-password').value;
+        const email = data_register.querySelector('#register-email').value;
+
+        data_register.querySelectorAll(".error").forEach(el => el.remove());
+
+        const result = await userRegisterRequest(user, password, email);
+
+        if (!result.success) {
+            for (const field in result.errors) {
+                console.log("FIELD", field)
+                const input = document.querySelector(`input[name='register-${field}']`);
+                console.log("INPUT", input)
+                if (input) {
+                    const errorEl = document.createElement("div");
+                    errorEl.classList.add("error");
+                    errorEl.style.color = "red";
+                    errorEl.textContent = result.errors[field][0];
+                    input.insertAdjacentElement("afterend", errorEl);
+                }
+            }
+        return;
+  }
+    const input = document.querySelector(`input[name='register-email']`);
+    const succes_message = document.createElement("div");
+    succes_message.style.color = "green";
+    succes_message.textContent = "Регистрация успешна";
+    input.insertAdjacentElement("afterend", succes_message);
+    setTimeout(function() {
+        // register popup will disappear after 2 sec
+        register_popup.style.display = "none";
+        }, 2000);
+  });
+
+    profile_button.addEventListener('click', async (e) => {
+        e.preventDefault();
+        loadContent("/userprofile");
+    });
+
+
 };
 
-
 export function logout() {
-  localStorage.removeItem("auth_token"); // видаляємо токен
+  localStorage.removeItem("auth_token"); // delete the token
   console.log("Logged out");
   window.location.href = "/";
 }

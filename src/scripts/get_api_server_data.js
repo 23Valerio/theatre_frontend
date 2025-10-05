@@ -1,5 +1,3 @@
-import { API_BASE_URL } from '../variables.js';
-
 export async function fetchGetApiEndpointData(api_endpoint) {
     try {
         const response = await fetch(api_endpoint);

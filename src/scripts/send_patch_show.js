@@ -1,10 +1,10 @@
-export async function sendPatchDataShow(api_endpoint, id, loadData) {
+export async function sendPatchDataShow(api_endpoint, id, loadData, token) {
      try {
         const response = await fetch(`${api_endpoint}${id}/`, {
             method: 'PATCH',
             headers: {
                 'Content-Type': 'application/json',
-                'Authorization': `Token b76b9425a198948c23407ce14fd242d11d35338d`,
+                'Authorization': `Token ${token}`,
             },
             body: JSON.stringify(loadData)
         });

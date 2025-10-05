@@ -1,6 +1,8 @@
 import { fetchGetApiEndpointData } from "./get_api_server_data";
 import { createAdminsShowsGallery } from "./create_admin_shows_gallery.js";
 import { createAdminsImageGallery } from "./create_admin_image_gallery.js";
+import { getTickets } from "./get_show_tickets_request.js"; 
+import { createAdminsTicketsGallery } from "./create_admins_tickets_gallery.js";
 import { API_GALLERY_ENDPOINT, API_SHOWS_ENDPOINT, API_SLIDER_ENDPOINT, API_BASE_URL } from "../variables";
 
 
@@ -46,7 +48,10 @@ export async function gallery() {
     createAdminsImageGallery(gallery_data, API_BASE_URL + API_GALLERY_ENDPOINT);
 }
 
-function tickets() {
-
-    return '<h2>Tickets Content</h2>';
+export async function tickets() {
+    const container = document.getElementById('view');
+    container.innerHTML = '';
+    const token = 'b76b9425a198948c23407ce14fd242d11d35338d';
+    const tickets_data = await getTickets(token);
+    createAdminsTicketsGallery(tickets_data);
 }

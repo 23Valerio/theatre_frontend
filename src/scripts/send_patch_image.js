@@ -1,4 +1,4 @@
-export async function sendPatchImage(api_endpoint, file, id = null ) {
+export async function sendPatchImage(api_endpoint, file, token, id = null) {
     const formData = new FormData();
     formData.append('image', file);
 
@@ -10,7 +10,7 @@ export async function sendPatchImage(api_endpoint, file, id = null ) {
             method,
             body: formData,
             headers: {
-                'Authorization': `Token b76b9425a198948c23407ce14fd242d11d35338d`
+                'Authorization': `Token ${token}`
             },
 });
 

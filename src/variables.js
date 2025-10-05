@@ -5,6 +5,10 @@ export const API_GALLERY_ENDPOINT = "gallery/";
 export const API_SLIDER_ENDPOINT = "slider/";
 export const API_FUTURE_SHOWS_ENDPOINT = "shows/future/";
 export const API_USER_LOGIN_ENDPOINT = "login/";
+export const API_USER_REGISTER_ENDPOINT = "register/";
+export const API_USER_PROFILE_ENDPOINT = "userprofile/";
+export const API_TICKETS_ENDPOINT = "tickets/";
+export const API_BUY_TICKET_ENDPOINT = "buyticket/";
 
 
 
