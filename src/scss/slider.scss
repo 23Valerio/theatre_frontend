@@ -6,6 +6,15 @@
    position: relative;
    height: 30rem;
    width: 100%;
+   overflow: hidden;
+
+   @media (max-width: 768px) {
+      height: 25rem;
+   }
+
+      @media (max-width: 480px) {
+      height: 20rem;
+   }
 }
 
 .carousel {
@@ -13,12 +22,14 @@
    height: 100%;
    width: 100%;
    overflow: hidden;
+   margin: 0 auto;
 }
 
 .carousel__item {
    height: 80%;
    width: auto;
-   border-radius: 10px;
+   aspect-ratio: 16/9;
+   border-radius: 0.625re;
    overflow: hidden;
    box-shadow: 0 1rem 4rem rgb(0, 0, 0);
    position: absolute;

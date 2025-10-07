@@ -41,13 +41,14 @@ export async function createProgram(app) {
 
         const card_date = document.createElement('p');
         const date = new Date(program.date);
-        card_date.textContent = date.toLocaleDateString('ru-RU', {
+        const dateToStr = date.toLocaleDateString('ru-RU', {
             year: 'numeric',
             month: 'numeric',
             day: 'numeric',
             hour: '2-digit',
             minute: '2-digit'
         });
+        card_date.textContent = dateToStr;
         card_info.appendChild(card_date);
         card_info.appendChild(card_place);
 
@@ -55,6 +56,9 @@ export async function createProgram(app) {
         card_tickets.textContent = `Доступно билетов: ${program.tickets_count}`;
         card_info.appendChild(card_tickets);
 
+        const cardInfoShow = document.createElement('p');
+        cardInfoShow.textContent = program.description;
+        card_info.appendChild(cardInfoShow);
 
         const buttonsContainer = document.createElement('div');
         buttonsContainer.className = 'buttons-container';
@@ -63,13 +67,9 @@ export async function createProgram(app) {
         buyButton.textContent = 'Купить / Забронировать билет';
         buyButton.className = 'button';
         buyButton.addEventListener('click', (e) => {
-            
-            // Дописать нажатие кнопки!!!
-            console.log(program.id)
-            buyTicketButton(program.id);
+            buyTicketButton(program.id, program.name, program.place, dateToStr);
         });
         buttonsContainer.appendChild(buyButton);
-
         card_info.appendChild(buttonsContainer);
 
         if (program.tickets_available === '0') {
@@ -110,3 +110,4 @@ export async function createProgram(app) {
     app.appendChild(buyPopupContainer)
 
 }
+

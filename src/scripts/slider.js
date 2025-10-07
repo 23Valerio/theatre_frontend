@@ -90,9 +90,7 @@ function updateClasses() {
    }
 
    // Стартова ініціалізація
-   setTimeout(() => {
-      updateClasses();
-   }, 100);
+   setTimeout(() => {updateClasses();}, 100);
 
    const leftBtn = slider.querySelector('#leftBtn');
    const rightBtn = slider.querySelector('#rightBtn');

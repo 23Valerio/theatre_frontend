@@ -1,10 +1,23 @@
 import { sendRegisterTicketRequest } from './send_post_ticket_request';
 
-export async function buyTicketButton(show_id) {
+export async function buyTicketButton(show_id, name, place, date) {
     const buyPopupContainer = document.getElementById('buy-popup-container');
     const close_button = document.getElementById('buy-popup-close-modal');
     buyPopupContainer.style.display = 'flex';
     
+    const showInfo = document.getElementById('buy-ticket-show-info');
+    showInfo.textContent = '';
+
+    const showName = document.createElement('h5');
+    showName.textContent = name;
+
+    const showPlace = document.createElement('p');
+    showPlace.textContent = place + "     " + date;
+
+    showInfo.appendChild(showName);
+    showInfo.appendChild(showPlace);
+
+
 
     close_button.addEventListener('click', (e) => {
         buyPopupContainer.style.display = 'none';

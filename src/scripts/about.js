@@ -18,7 +18,7 @@ export async function createGallery() {
     popup_image.src = gallery_images[0]; 
 
     const popup_span = document.createElement('span');
-    popup_span.textContent = 'X'; 
+    popup_span.innerHTML = '&times;';
 
     popup_container.appendChild(popup_image);
     popup_container.appendChild(popup_span);
