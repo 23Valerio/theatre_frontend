@@ -5,10 +5,13 @@ import { createProgram } from './scripts/program.js';
 import { initAdminPage } from './scripts/admin.js';
 import { loginButton } from './scripts/login.js'
 import { initUserProfilePage } from './scripts/init_user_profile_page.js'
+import { sendMailRequest } from './scripts/send_mail_request.js'
+import { burgerHeader } from './scripts/header.js';
 
 
 export async function loadContent(route) {
   const app = document.getElementById('app');
+
   let content;
 
     switch (route) {
@@ -21,6 +24,7 @@ export async function loadContent(route) {
     case '/contacts':
       content = await (await fetch('/src/components/contacts.html')).text();
       app.innerHTML = content;
+      await sendMailRequest()
       break;
 
     case '/about':
@@ -54,6 +58,7 @@ export async function loadContent(route) {
       app.innerHTML = '';
       createHome(app);
   }
+
 }
 
 // Обработка кликов по ссылкам
@@ -74,6 +79,7 @@ window.addEventListener('popstate', () => {
 // Инициализация при загрузке страницы
 window.addEventListener('load', () => {
   loginButton();
+  burgerHeader();
   loadContent(window.location.pathname || '/');
 });
 

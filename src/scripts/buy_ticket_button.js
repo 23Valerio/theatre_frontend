@@ -17,7 +17,14 @@ export async function buyTicketButton(show_id, name, place, date) {
     showInfo.appendChild(showName);
     showInfo.appendChild(showPlace);
 
+        
+    const localUser = localStorage.getItem('user');
+    const localUserEmail = localStorage.getItem('email');
 
+    if (localUser) {
+        document.getElementById('buyer-name').value = localUser;
+        document.getElementById('buyer-email').value = localUserEmail;
+    }
 
     close_button.addEventListener('click', (e) => {
         buyPopupContainer.style.display = 'none';
@@ -31,19 +38,15 @@ export async function buyTicketButton(show_id, name, place, date) {
         const userName = buyPopupContainer.querySelector('#buyer-name').value;
         const email = buyPopupContainer.querySelector('#buyer-email').value;
         const phone = buyPopupContainer.querySelector('#buyer-phone').value;
-        console.log("REQUEST DATA", userName, email, phone)
-        const result = await sendRegisterTicketRequest(show_id, userName, email, phone)
+        const token = localStorage.getItem('token');
+        const result = await sendRegisterTicketRequest(show_id, userName, email, phone, token);
 
         
         if (!result.success) {
             for (const field in result.errors) {
-                console.log("FAILED", field)
-
-                
                 succes_message.textContent = "";
                 succes_message.style.color = "red";
-                succes_message.textContent = result.errors[field][0];
-                
+                succes_message.textContent = "Заполните все поля"; 
             }
         return;
   } else {

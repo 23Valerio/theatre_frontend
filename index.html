@@ -12,35 +12,36 @@
       <header class="site-header">
         <div class="header-container">
           <img class="logo" src="/Logo_Tresk.svg">   
-          <button class="burger" aria-label="Toggle menu">
-            <span></span><span></span><span></span>
-            </button>
-            <nav class="main-nav">
-              <ul>
-                <li><a href="#" data-route="/home">Главная</a></li>
-                <li><a href="#" data-route="/program">Программа</a></li>
-                <li><a href="#" data-route="/about">О нас</a></li>
-                <li><a href="#" data-route="/contacts">Контакты</a></li>
-                <li><a href="#" data-route="/partners">Партнеры</a></li>
-              </ul>
-            </nav>
-            <div>
+          <button class="burger" id="burger-button">
+            <span></span>
+            <span></span>
+            <span></span>
+          </button>
+          <nav class="main-nav" id="main-nav">
+            <ul>
+              <li><a href="#" data-route="/home">Главная</a></li>
+              <li><a href="#" data-route="/program">Программа</a></li>
+              <li><a href="#" data-route="/about">О нас</a></li>
+              <li><a href="#" data-route="/contacts">Контакты</a></li>
+              <li><a href="#" data-route="/partners">Партнеры</a></li>
+            </ul>
+          </nav>
+            <div class="header-buttons">
               <a href="" class="btn display-none" id="profile">Мой профиль</a>
               <a href="" class="btn" id="register">Регистрация</a>
               <a href="" class="btn border-btn hover-btn" id="login">Войти</a>
             </div>
-
         </div>
       </header>
       <div class="login-popup-container">
         <span class="close" id="login-close-modal">&times;</span>
         <form class="login-popup">
            <div class="login-container">
-              <label for="login-uname">Username</label>
-              <input type="text" placeholder="Enter Username" id="login-uname" name="login-uname" required autocomplete="current-password">
+              <label for="login-username">Username</label>
+              <input type="text" placeholder="Enter Username" id="login-username" name="login-username" required autocomplete="current-password">
 
-              <label for="login-psw">Password</label>
-              <input type="password" placeholder="Enter Password" id="login-psw" name="login-psw" required autocomplete="username">
+              <label for="login-password">Password</label>
+              <input type="password" placeholder="Enter Password" id="login-password" name="login-password" required autocomplete="username">
 
               <button type="button" id="login-button">Login</button>
             </div>

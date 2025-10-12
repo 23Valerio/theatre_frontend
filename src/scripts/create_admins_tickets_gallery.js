@@ -81,7 +81,14 @@ export function createAdminsTicketsGallery(data) {
                 row.appendChild(td_phone);
 
                 const td_bought = document.createElement('td');
-                const buyed_at = new Date(ticket.created_at).toLocaleString() 
+                const date = new Date(ticket.created_at);
+                const buyed_at = date.toLocaleString('ru-RU', {
+                    year: 'numeric',
+                    month: 'numeric',
+                    day: 'numeric',
+                    hour: '2-digit',
+                    minute: '2-digit'
+                });
                 td_bought.textContent = buyed_at || '---';
                 row.appendChild(td_bought);
 

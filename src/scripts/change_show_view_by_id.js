@@ -2,6 +2,7 @@ import { sendPatchDataShow } from "./send_patch_show.js";
 import { sendPatchImage } from "./send_patch_image.js";
 import { API_BASE_URL, API_SHOWS_ENDPOINT } from "../variables.js";
 import { shows } from "./admin.js";
+import { API_ADMIN_TOKEN } from "../variables.js";
 
 function collectData(show_card) {
     return {
@@ -44,13 +45,13 @@ export function changeShowViewByID(id, show_data) {
     confirm_btn.type = 'button';
     show_card.querySelector('.admin-info-container').appendChild(confirm_btn);
     confirm_btn.addEventListener('click', async () => {
+        const token = localStorage.getItem('token');
         const changed_show_data = collectData(show_card);
-        const token = 'b76b9425a198948c23407ce14fd242d11d35338d';
         sendPatchDataShow(API_BASE_URL + API_SHOWS_ENDPOINT, id, changed_show_data, token);
 
         const new_image_file = show_card.querySelector('#image');
         if (new_image_file.files.length > 0 && new_image_file) {
-            sendPatchImage(API_BASE_URL + API_SHOWS_ENDPOINT, new_image_file.files[0], token, id);
+            sendPatchImage(API_BASE_URL + API_SHOWS_ENDPOINT, new_image_file.files[0], id, token);
         }
         await shows();
     });

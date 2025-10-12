@@ -51,7 +51,7 @@ export async function gallery() {
 export async function tickets() {
     const container = document.getElementById('view');
     container.innerHTML = '';
-    const token = 'b76b9425a198948c23407ce14fd242d11d35338d';
+    const token = 'bbb42652c363d3237d634164536b5e6c73e66a80'; //localStorage.getItem('token');
     const tickets_data = await getTickets(token);
     createAdminsTicketsGallery(tickets_data);
 }

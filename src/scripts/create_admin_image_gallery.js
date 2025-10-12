@@ -1,6 +1,6 @@
 import { deleteRequestByID } from './delete_request_by_ID.js';
 import { sendPatchImage } from './send_patch_image.js';
-import { API_BASE_URL, API_GALLERY_ENDPOINT } from '../variables.js';
+import { API_ADMIN_TOKEN, API_BASE_URL, API_GALLERY_ENDPOINT } from '../variables.js';
 import { slider, gallery } from './admin.js';
 
 
@@ -21,7 +21,7 @@ export function createAdminsImageGallery(data, api_endpoint) {
         image_container.appendChild(delete_btn);
         delete_btn.addEventListener('click', () => {
             image_container.remove();
-            deleteRequestByID(api_endpoint, delete_btn.id);
+            deleteRequestByID(api_endpoint, API_ADMIN_TOKEN, delete_btn.id);
         });
         image_gallery.appendChild(image_container);
     });
@@ -52,8 +52,9 @@ export function createAdminsImageGallery(data, api_endpoint) {
     });
     add_btn.addEventListener('click', async () => {
         const new_image_file = add_image_container.querySelector('#image');
+        const token = localStorage.getItem('token');
         if (new_image_file.files.length > 0 && new_image_file) {
-            await sendPatchImage(api_endpoint, new_image_file.files[0]);
+            await sendPatchImage(api_endpoint, new_image_file.files[0], token);
         };
         (api_endpoint === API_BASE_URL + API_GALLERY_ENDPOINT) ? gallery() : slider();
 });

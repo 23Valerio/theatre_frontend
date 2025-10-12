@@ -23,5 +23,7 @@ export async function userLoginRequest(user, pwd) {
   // DELETE log !!!
   console.log("SUCCESS", data)
   localStorage.setItem('token', data.token);
+  localStorage.setItem('user', data.user);
+  localStorage.setItem('email', data.email);
   return { success: true, data };
 }

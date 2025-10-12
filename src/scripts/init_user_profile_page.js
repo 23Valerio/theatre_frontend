@@ -1,9 +1,19 @@
 import { userProfileRequest } from './user_profile_request.js'
+import { loadContent } from '../main.js'
 
 export async function initUserProfilePage() {
     const token = localStorage.getItem('token');
+    
+    if (!token) {
+        console.error('No token found in localStorage');
+        return;
+    }
     const profile = await userProfileRequest(token);
 
+    if (profile.username === "admin") {
+        loadContent('/admin');
+    } else {
+        
     const app = document.getElementById('app');
     app.innerHTML = '';
     const username = document.createElement('h2');
@@ -27,7 +37,7 @@ export async function initUserProfilePage() {
         show_card.className = "show-ticket";
         
         const show_name = document.createElement('p');
-        show_name.innerHTML = show.show_name;
+        show_name.textContent = show.show_name;
         show_name.className = 'tickets-show-name';
         show_card.appendChild(show_name);
 
@@ -47,4 +57,5 @@ export async function initUserProfilePage() {
         });
 
     app.appendChild(purchased_tickets);
+    }
 };

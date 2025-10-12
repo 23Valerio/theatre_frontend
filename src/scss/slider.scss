@@ -12,7 +12,7 @@
       height: 25rem;
    }
 
-      @media (max-width: 480px) {
+   @media (max-width: 480px) {
       height: 20rem;
    }
 }
@@ -29,35 +29,32 @@
    height: 80%;
    width: auto;
    aspect-ratio: 16/9;
-   border-radius: 0.625re;
+   border-radius: 0.625rem;
    overflow: hidden;
    box-shadow: 0 1rem 4rem rgb(0, 0, 0);
    position: absolute;
    top: 50%;
    left: 50%;
-   border: 2px solid #363636;
-   display: block;
-   visibility: visible;
-   opacity: 0;
    transform: translate(-50%, -50%) scale(.8);
-   transition: none;
+   opacity: 0;
+   z-index: 1;
+   transition: all 1.2s cubic-bezier(0.33, 1, 0.68, 1);
 }
 
 .carousel__item img {
    width: 100%;
    height: 100%;
    object-fit: cover;
-   transition: filter 0.6s ease-in-out 0.4s;
    filter: grayscale(80%);
+   transition: filter 0.6s ease-in-out 0.4s;
 }
 
+/* Центральний слайд */
 .carousel__item--main {
    opacity: 1;
    transform: translate(-50%, -50%) scale(1);
    z-index: 3;
    cursor: pointer;
-   transition: all 1.2s cubic-bezier(0.33, 1, 0.68, 1),
-               visibility 0.6s ease-in-out;
 }
 
 .carousel__item--main img {
@@ -65,50 +62,63 @@
 }
 
 .carousel__item--left {
-   left: 0px;
-   transform: translate(10vw, -50%) scale(.9);
+   left: 25%;
+   transform: translate(-50%, -50%) scale(.9);
    opacity: 1;
    z-index: 2;
-   transition: all 1.2s cubic-bezier(0.33, 1, 0.68, 1);
-}
-
-.carousel__item--left-end {
-   left: 0px;
-   transform: translate(0%, -50%) scale(.8);
-   opacity: 1;
-   z-index: 1;
-   transition: all 1.2s cubic-bezier(0.33, 1, 0.68, 1);
 }
 
 .carousel__item--right {
-   right: 0px;
-   transform: translate(calc(10vw - 50%), -50%) scale(.9);
+   left: 75%;
+   transform: translate(-50%, -50%) scale(.9);
    opacity: 1;
    z-index: 2;
-   transition: all 1.2s cubic-bezier(0.33, 1, 0.68, 1);
+}
+
+.carousel__item--left-end {
+   left: 10%;
+   transform: translate(-50%, -50%) scale(.8);
+   opacity: 1;
+   z-index: 1;
 }
 
 .carousel__item--right-end {
-   right: 0px;
-   transform: translate(0%, -50%) scale(.8);
+   left: 90%;
+   transform: translate(-50%, -50%) scale(.8);
    opacity: 1;
    z-index: 1;
-   transition: all 1.2s cubic-bezier(0.33, 1, 0.68, 1);
 }
 
+/* Адаптив */
+@media (max-width: 768px) {
+   .carousel__item--left { left: 20%; scale: 0.85; }
+   .carousel__item--right { left: 80%; scale: 0.85; }
+   .carousel__item--left-end { left: 5%; scale: 0.75; }
+   .carousel__item--right-end { left: 95%; scale: 0.75; }
+}
+
+@media (max-width: 480px) {
+   .carousel__item--left { left: 25%; scale: 0.8; }
+   .carousel__item--right { left: 75%; scale: 0.8; }
+   .carousel__item--left-end { left: 15%; scale: 0.7; }
+   .carousel__item--right-end { left: 85%; scale: 0.7; }
+}
+
+/* Hover ефекти */
 .carousel__item--main:hover {
    transform: translate(-50%, -50%) scale(1.05);
    transition: transform 0.8s cubic-bezier(0.33, 1, 0.68, 1);
 }
 
+/* Кнопки */
 .carousel__btns {
    position: absolute;
    bottom: 0;
    left: 50%;
-   z-index: 3;
-   transform: translateX(-1rem);
+   transform: translateX(-50%);
    display: flex;
    gap: 1rem;
+   z-index: 3;
 }
 
 .carousel__btn {
@@ -122,19 +132,10 @@
    transition: all 0.4s ease;
 }
 
-.carousel__btn svg {
-   height: 1.8rem;
-   width: 1.8rem;
-}
-
 .carousel__btn:hover {
    color: #3a3a3a;
    border: 1px solid #3a3a3a;
    background-color: white;
-}
-
-.carousel__item--transitioning {
-   transition: all 1.2s cubic-bezier(0.33, 1, 0.68, 1) !important;
 }
 
 .carousel__btn:disabled {
@@ -146,13 +147,4 @@
    color: #fff;
    border: 1px solid white;
    background-color: transparent;
-}
-
-.carousel__item--animating {
-   transition: transform 1.2s cubic-bezier(0.33, 1, 0.68, 1),
-               left 1.2s cubic-bezier(0.33, 1, 0.68, 1),
-               right 1.2s cubic-bezier(0.33, 1, 0.68, 1),
-               opacity 1.2s cubic-bezier(0.33, 1, 0.68, 1),
-               visibility 1.2s cubic-bezier(0.33, 1, 0.68, 1),
-               box-shadow 1.2s cubic-bezier(0.33, 1, 0.68, 1);
 }

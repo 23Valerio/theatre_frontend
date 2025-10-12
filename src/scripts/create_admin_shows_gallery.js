@@ -112,9 +112,10 @@ function createNewShowCard() {
         confirm_btn.type = 'submit';
         confirm_btn.addEventListener('click', async (e) => {
             e.preventDefault();
+            const token = localStorage.getItem('token');
             const new_show_data = collectData(info_container);
             const new_image_file = info_container.querySelector('#image');
-            await sendPostDataShow(API_BASE_URL + API_SHOWS_ENDPOINT, new_show_data, new_image_file.files[0]);
+            await sendPostDataShow(API_BASE_URL + API_SHOWS_ENDPOINT, new_show_data, token, new_image_file.files[0]);
             await shows();
         });
         
@@ -276,9 +277,10 @@ function createListOfSows(data) {
         delete_btn.name = item.id + '_delete';
         buttons_container.appendChild(delete_btn);
         delete_btn.addEventListener('click', () => {
+            const token = localStorage.getItem('token');
             const del_container = delete_btn.closest('.admin-show-card');
             del_container.remove();
-            deleteRequestByID(API_BASE_URL + API_SHOWS_ENDPOINT, delete_btn.id);
+            deleteRequestByID(API_BASE_URL + API_SHOWS_ENDPOINT, token, delete_btn.id);
         });
         
         container.appendChild(show_card);

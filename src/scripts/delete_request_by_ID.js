@@ -1,10 +1,10 @@
-export async function deleteRequestByID(api_endpoint, id) {
+export async function deleteRequestByID(api_endpoint, token, id) {
     try {
         const response = await fetch(`${api_endpoint}${id}/`, {
             method: 'DELETE',
             headers: {
                 'Content-Type': 'application/json',
-                'Authorization': `Token b76b9425a198948c23407ce14fd242d11d35338d`
+                'Authorization': `Token ${token}`,
             },
         });
         if (!response.ok) {

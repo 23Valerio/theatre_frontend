@@ -40,23 +40,31 @@ export async function loginButton() {
     login_form_button.addEventListener('click', async (e) => {
         e.preventDefault();
         const data_login = document.querySelector('.login-popup-container');
-        const user = data_login.querySelector('#login-uname').value;
-        const password = data_login.querySelector('#login-psw').value;
-        console.log(user, password);
+        const user = data_login.querySelector('#login-username').value;
+        const password = data_login.querySelector('#login-password').value;
         
         data_login.querySelectorAll(".error").forEach(el => el.remove());    
-
         const result = await userLoginRequest(user, password);
         
         if (!result.success) {
-           console.log("IF LOGIN NOT OK",result)
-            // check for errors
-            if (result.errors.non_field_errors) {
+           // check for errors
+            for (const field in result.errors) {
+                const input = data_login.querySelector(`input[name='login-${field}']`);
+        
+            if (input) {
                 const errorEl = document.createElement("div");
                 errorEl.classList.add("error");
                 errorEl.style.color = "red";
-                errorEl.textContent = result.errors.non_field_errors[0];
+                errorEl.textContent = result.errors[field][0];
+                input.insertAdjacentElement("afterend", errorEl);
+            } else if (field === "non_field_errors") {
+                // Якщо це загальна помилка — додати в кінець форми
+                const errorEl = document.createElement("div");
+                errorEl.classList.add("error");
+                errorEl.style.color = "red";
+                errorEl.textContent = result.errors[field][0];
                 data_login.querySelector(".login-container").appendChild(errorEl);
+                }
             }
             return;
         }
@@ -110,12 +118,10 @@ export async function loginButton() {
         e.preventDefault();
         loadContent("/userprofile");
     });
-
-
 };
 
 export function logout() {
-  localStorage.removeItem("auth_token"); // delete the token
+  localStorage.removeItem('token'); // delete the token
   console.log("Logged out");
   window.location.href = "/";
 }

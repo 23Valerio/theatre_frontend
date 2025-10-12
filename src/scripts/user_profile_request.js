@@ -2,6 +2,7 @@ import { API_BASE_URL } from '../variables.js';
 import { API_USER_PROFILE_ENDPOINT } from '../variables.js';
 
 export async function userProfileRequest(token) {
+    console.log('Token for profile request:', token);
     try {
         const response = await fetch(`${API_BASE_URL}${API_USER_PROFILE_ENDPOINT}`, {
             method: "GET",
@@ -16,10 +17,8 @@ export async function userProfileRequest(token) {
         }
 
         const data = await response.json();
-        console.log('Дані користувача:', data);
         return data;
     } catch (error) {
-        console.error('Помилка:', error);
         return null;
     }
 }
