@@ -52,7 +52,6 @@ export async function loginButton() {
         }
 
         if (!result.success) {
- 
            // check for errors
             for (const field in result.errors) {
                 const input = data_login.querySelector(`input[name='login-${field}']`);
