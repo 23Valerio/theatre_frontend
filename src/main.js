@@ -22,13 +22,13 @@ export async function loadContent(route) {
       break;
 
     case '/contacts':
-      content = await (await fetch('/src/components/contacts.html')).text();
+      content = await (await fetch('/components/contacts.html')).text();
       app.innerHTML = content;
       await sendMailRequest()
       break;
 
     case '/about':
-      content = await (await fetch('/src/components/about.html')).text();
+      content = await (await fetch('/components/about.html')).text();
       app.innerHTML = content;
       createGallery();
       break;
@@ -39,12 +39,12 @@ export async function loadContent(route) {
       break;
 
     case '/partners':
-      content = await (await fetch('/src/components/partners.html')).text();
+      content = await (await fetch('/components/partners.html')).text();
       app.innerHTML = content;
       break;
 
     case '/admin':
-      content = await (await fetch('/src/components/admin.html')).text();
+      content = await (await fetch('/components/admin.html')).text();
       app.innerHTML = content;
       initAdminPage();
       break;
