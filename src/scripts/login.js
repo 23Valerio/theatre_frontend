@@ -45,10 +45,11 @@ export async function loginButton() {
         
         data_login.querySelectorAll(".error").forEach(el => el.remove());    
         const result = await userLoginRequest(user, password);
-           if (result.data.user === 'admin' && result.success) {  
-                console.log('Admin logged in');
-                document.dispatchEvent(new Event('adminLoggedIn'));
-            }
+        const username = result?.data?.user;
+        if (username === 'admin' && result.success) {
+            console.log('Admin logged in');
+            document.dispatchEvent(new Event('adminLoggedIn'));
+        }
 
         if (!result.success) {
  
