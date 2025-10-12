@@ -1,4 +1,4 @@
-export const API_BASE_URL = "http://51.20.9.159:80/api/";
+export const API_BASE_URL = "http://51.20.9.159/api/";
 export const API_ADMIN_ENDPOINT = "admin/";
 export const API_SHOWS_ENDPOINT = "shows/";
 export const API_GALLERY_ENDPOINT = "gallery/";
