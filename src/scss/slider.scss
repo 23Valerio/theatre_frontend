@@ -62,46 +62,48 @@
 }
 
 .carousel__item--left {
-   left: 25%;
+   left: 33%;
    transform: translate(-50%, -50%) scale(.9);
    opacity: 1;
    z-index: 2;
 }
 
 .carousel__item--right {
-   left: 75%;
+   left: 66%;
    transform: translate(-50%, -50%) scale(.9);
    opacity: 1;
    z-index: 2;
 }
 
 .carousel__item--left-end {
-   left: 10%;
+   left: 20%;
    transform: translate(-50%, -50%) scale(.8);
    opacity: 1;
    z-index: 1;
 }
 
 .carousel__item--right-end {
-   left: 90%;
+   left: 80%;
    transform: translate(-50%, -50%) scale(.8);
    opacity: 1;
    z-index: 1;
 }
 
 /* Адаптив */
+@media (max-width: 1024px) {
+   .body-carousel { height: 25rem; }
+   .carousel__item--left { left: 40%; }
+   .carousel__item--right { left: 60%;  }
+   .carousel__item--left-end { left: 30%;  }
+   .carousel__item--right-end { left: 70%; }
+}
+
 @media (max-width: 768px) {
-   .carousel__item--left { left: 20%; scale: 0.85; }
-   .carousel__item--right { left: 80%; scale: 0.85; }
-   .carousel__item--left-end { left: 5%; scale: 0.75; }
-   .carousel__item--right-end { left: 95%; scale: 0.75; }
+   .body-carousel { height: 20rem; }
 }
 
 @media (max-width: 480px) {
-   .carousel__item--left { left: 25%; scale: 0.8; }
-   .carousel__item--right { left: 75%; scale: 0.8; }
-   .carousel__item--left-end { left: 15%; scale: 0.7; }
-   .carousel__item--right-end { left: 85%; scale: 0.7; }
+   .body-carousel { height: 15rem; }
 }
 
 /* Hover ефекти */

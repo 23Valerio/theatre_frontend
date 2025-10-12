@@ -1,5 +1,4 @@
-import { API_BASE_URL } from '../variables.js';
-import { API_TICKETS_ENDPOINT } from '../variables.js';
+import { API_BASE_URL, API_TICKETS_ENDPOINT } from '../variables.js';
 
 export async function getTickets(token) {
     try {

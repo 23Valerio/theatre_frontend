@@ -1,4 +1,5 @@
 import { sendRegisterTicketRequest } from './send_post_ticket_request';
+import { loadContent } from '../main.js';
 
 export async function buyTicketButton(show_id, name, place, date) {
     const buyPopupContainer = document.getElementById('buy-popup-container');
@@ -50,14 +51,13 @@ export async function buyTicketButton(show_id, name, place, date) {
             }
         return;
   } else {
-        succes_message.textContent = "";
-        succes_message.style.color = "green";
-        succes_message.textContent = "Резервация успешна";
-  }
-
-
-    
-
+            succes_message.textContent = "";
+            succes_message.style.color = "green";
+            succes_message.textContent = "Резервация успешна";
+            setTimeout(function() {
+            // reload page after 2 sec
+            loadContent('/program');;
+            }, 1000);
+        }
     }); 
-
 };

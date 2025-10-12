@@ -2,7 +2,6 @@ import { sendPatchDataShow } from "./send_patch_show.js";
 import { sendPatchImage } from "./send_patch_image.js";
 import { API_BASE_URL, API_SHOWS_ENDPOINT } from "../variables.js";
 import { shows } from "./admin.js";
-import { API_ADMIN_TOKEN } from "../variables.js";
 
 function collectData(show_card) {
     return {

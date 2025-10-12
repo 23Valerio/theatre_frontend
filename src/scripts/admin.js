@@ -7,13 +7,32 @@ import { API_GALLERY_ENDPOINT, API_SHOWS_ENDPOINT, API_SLIDER_ENDPOINT, API_BASE
 
 
 export function initAdminPage() {
-        const links = document.querySelectorAll('.admin-navigation a');
-        const template = {
+    localStorage.removeItem('token'); // delete the token
+    localStorage.removeItem('user'); // delete the username 
+    localStorage.removeItem('email'); // delete the email
+
+    const links = document.querySelectorAll('.admin-navigation a');
+    const template = {
             slider: slider,
             shows: shows,
             gallery: gallery,
             tickets: tickets,
-        }
+    }
+
+    const loginPopup = document.querySelector('.login-popup-container');
+    loginPopup.style.display = 'flex';
+    links.forEach(link => {
+        link.style.pointerEvents = 'none';
+    });
+    
+    document.addEventListener('adminLoggedIn', () => {
+        loginPopup.style.display = 'none'; // сховати попап
+        links.forEach(link => {
+            link.style.pointerEvents = 'auto';
+
+        });
+    });
+
         links.forEach(link => {
             link.addEventListener('click', (e) => {
                 e.preventDefault();
@@ -23,7 +42,9 @@ export function initAdminPage() {
                 const viewName = link.getAttribute('data-view');
                 document.getElementById('view').innerHTML = '';    
                 template[viewName]();
-                links.forEach(l => l.classList.remove('active-link'));
+                links.forEach(l => {
+                    l.classList.remove('active-link');
+                });
                 link.classList.add('active-link');
             });
         });
@@ -51,7 +72,7 @@ export async function gallery() {
 export async function tickets() {
     const container = document.getElementById('view');
     container.innerHTML = '';
-    const token = 'bbb42652c363d3237d634164536b5e6c73e66a80'; //localStorage.getItem('token');
+    const token = localStorage.getItem('token');
     const tickets_data = await getTickets(token);
     createAdminsTicketsGallery(tickets_data);
 }

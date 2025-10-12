@@ -72,13 +72,11 @@ export async function createProgram(app) {
         buttonsContainer.appendChild(buyButton);
         card_info.appendChild(buttonsContainer);
 
-        if (program.tickets_available === '0') {
+        if (program.tickets_count === 0) {
+            console.log('No tickets available');
             buyButton.disabled = true;
-            reserveButton.disabled = true;
             buyButton.textContent = 'Билеты отсутствуют';
-            reserveButton.textContent = 'Билеты отсутствуют';
             buyButton.classList.add('disabled');
-            reserveButton.classList.add('disabled');
         }
 
         programList.appendChild(cardItem);

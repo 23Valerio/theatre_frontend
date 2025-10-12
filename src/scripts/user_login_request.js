@@ -20,8 +20,6 @@ export async function userLoginRequest(user, pwd) {
     console.log("ERROR", data)
     return { success: false, errors: data };
   }
-  // DELETE log !!!
-  console.log("SUCCESS", data)
   localStorage.setItem('token', data.token);
   localStorage.setItem('user', data.user);
   localStorage.setItem('email', data.email);

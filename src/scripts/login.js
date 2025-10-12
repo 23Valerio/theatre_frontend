@@ -45,8 +45,13 @@ export async function loginButton() {
         
         data_login.querySelectorAll(".error").forEach(el => el.remove());    
         const result = await userLoginRequest(user, password);
-        
+           if (result.data.user === 'admin' && result.success) {  
+                console.log('Admin logged in');
+                document.dispatchEvent(new Event('adminLoggedIn'));
+            }
+
         if (!result.success) {
+ 
            // check for errors
             for (const field in result.errors) {
                 const input = data_login.querySelector(`input[name='login-${field}']`);
@@ -74,6 +79,7 @@ export async function loginButton() {
             profile_button.style.fontWeight = "bolder"
             profile_button.innerHTML = user;
             profile_button.style.display = "inline-block";
+
     }); 
 
     const register_form_button = document.getElementById('register-button');
@@ -90,9 +96,7 @@ export async function loginButton() {
 
         if (!result.success) {
             for (const field in result.errors) {
-                console.log("FIELD", field)
                 const input = document.querySelector(`input[name='register-${field}']`);
-                console.log("INPUT", input)
                 if (input) {
                     const errorEl = document.createElement("div");
                     errorEl.classList.add("error");
@@ -121,7 +125,8 @@ export async function loginButton() {
 };
 
 export function logout() {
-  localStorage.removeItem('token'); // delete the token
-  console.log("Logged out");
-  window.location.href = "/";
+    localStorage.removeItem('token'); // delete the token
+    localStorage.removeItem('user'); // delete the username 
+    localStorage.removeItem('email'); // delete the email
+    window.location.href = "/";
 }
